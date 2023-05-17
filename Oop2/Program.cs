@@ -4,13 +4,11 @@
     {
         static void Main(string[] args)
         {
+            RendererPlayer player = new RendererPlayer();
+            player.ShowPlayer();
 
-            Player player = new Player();
-
-            int x = player.X; 
-            int y = player.Y;
-
-            Console.SetCursorPosition(x, y);
+            
+            
             Console.ReadKey();
         }
     }
