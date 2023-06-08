@@ -13,6 +13,11 @@ namespace ASPNETCoreLearning.Controllers
             _logger = logger;
         }
 
+        public IActionResult PrintInfo()
+        {
+            return View();
+        }
+
         public IActionResult Index()
         {
             return View();
