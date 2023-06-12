@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Runtime.InteropServices;
 
 namespace TestCode
 {
@@ -6,54 +7,54 @@ namespace TestCode
     {
         static void Main(string[] args)
         {
-            Person<int> tom = new Person<int>(234, "Pidor");
-            Person<string> bob = new Person<string>("abc123", "Bob");
-            //Person <PersonIntString> = new Person<PersonIntString>(new PersonIntString(234, "sdfsd"));
 
-            
+            Game game = new Game("Epic Seven");
+            Character character = new Character("Clarissa", game);
 
-            int tomId = tom.Id;
-            string bobId = bob.Id;
+            character.Print();
 
-            Console.WriteLine(tomId);
-            Console.WriteLine(bobId);
 
 
 
         }
     }
 
-    class PersonIntString
+    class Game
     {
-        public int Id { get; }
-        public string Name { get; }
-        public PersonIntString(int id, string name)
+        private string _nameGame;
+
+        public Game(string nameGame)
         {
-            Id = id;
-            Name = name;
+            _nameGame = nameGame;
+        }
+
+        public void Print()
+        {
+            Console.WriteLine($"Название игры {_nameGame}");
         }
     }
 
-    class Person<T>
+    class Character
     {
-        public T Id { get; set; }
-        public string Name { get; set; }
-        public Person(T id, string name) 
+        private string _name;
+        private Game _game;
+
+        public Character(string name, Game game)
         {
-            Id = id;
-            Name = name;
+            _name = name;
+            _game = game;
+        }
+
+        public void Print()
+        {
+            _game.Print();
+            Console.WriteLine($"Персонаж: {_name}");
         }
     }
 
-    class Company<P>
-    {
-        public P CEO { get; set; }
-        
-        public Company (P ceo)
-        {
-            CEO = ceo;
-        }
-    }
+
 
 
 }
+
+
