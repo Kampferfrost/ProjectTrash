@@ -8,50 +8,50 @@ namespace TestCode
         static void Main(string[] args)
         {
 
-            Game game = new Game("Epic Seven");
-            Character character = new Character("Clarissa", game);
+            Game game = new Game();
 
-            character.Print();
-
-
+            game.ShowInfo();
 
 
         }
     }
 
-    class Game
+    class Game 
     {
-        private string _nameGame;
+        private List<Character> _characters = new List<Character>();
 
-        public Game(string nameGame)
+        public Game() 
         {
-            _nameGame = nameGame;
+            _characters.Add(new Character("Clarissa", "Damager"));
+            _characters.Add(new Character("Fishl", "Archer"));
         }
 
-        public void Print()
+        public void ShowInfo()
         {
-            Console.WriteLine($"Название игры {_nameGame}");
+            for (int i = 0; i < _characters.Count; i++)
+            {
+                _characters[i].ShowInfo();
+            }
         }
+
     }
 
     class Character
     {
         private string _name;
-        private Game _game;
+        private string _class;
 
-        public Character(string name, Game game)
+        public Character(string name, string description)
         {
             _name = name;
-            _game = game;
+            _class = description;
         }
 
-        public void Print()
+        public void ShowInfo()
         {
-            _game.Print();
-            Console.WriteLine($"Персонаж: {_name}");
+            Console.WriteLine($"{_name} {_class}");
         }
     }
-
 
 
 
