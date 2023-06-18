@@ -1,75 +1,83 @@
 ﻿using System.Net;
 using System.Runtime.InteropServices;
+using System;
+using System.Security.Cryptography.X509Certificates;
+using TestCode;
 
 namespace TestCode
 {
+
+    public abstract class Alcohol
+    {
+        public virtual string State { get; set; }
+
+        public Alcohol(string state)
+        {
+            State = state;
+        }
+    }
+
+    public class Zero : Alcohol
+    {
+        public Zero() : base("Трезв")
+        {
+        }
+    }
+
+    public class Low : Alcohol
+    {
+        public Low() : base("Немного пьян")
+        {
+        }
+    }
+
+    public class High : Alcohol
+    {
+        public High() : base("пьян")
+        {
+        }
+    }
+
+
+    internal class Measurement
+    {
+        public string Name { get; set; }
+        public Alcohol Alcohol { get; set; }
+    }
+
+
     internal class Program
     {
+
+        public static List<Alcohol> Alcohols = new List<Alcohol>()
+        {
+            new Zero(),
+            new Low(),
+            new High()
+        };
+
         static void Main(string[] args)
         {
+            var alcoholState = GetAlchoholState<High>();
 
-            Console.WriteLine("Меню");
-            Console.WriteLine("Choose an operation");
-            Console.WriteLine("1 - Вывести всех персонажей");
-            Console.WriteLine("2 - Добавить персонажа");
-            Console.WriteLine("");
+            Console.WriteLine(alcoholState.State);
+        }
 
-            Game game = new Game();
+        public static T GetAlchoholState<T>() where T : Alcohol
+        {
+            var s = Alcohols.FirstOrDefault(s => s.GetType() == typeof(T));
 
-            int choose = 0;
-            choose = Convert.ToInt32(Console.ReadLine());
-            if (choose == 2) 
-            {
-                game.AddListGame(new Character("Clarissa"));
-                game.PrintAllCharactersGames();
-            }
-            else
-            {
-                Console.WriteLine("Ты что, ожидал тут что-то увидеть логику, МММММ?\nТут только трешь битарда");
-            }
-
-            Console.WriteLine("\nВсе сегодня больше не программируешь. Мяу");
-            
-
-
+            return s as T;
+            //return Activator.CreateInstance<T>();
         }
     }
-
-    class Game
-    {
-        private List<Character> _characters = new List<Character>();
-
-        public void AddListGame(Character characters)
-        {
-            _characters.Add(characters);
-        }
-
-        public void PrintAllCharactersGames()
-        {
-            for (int i = 0; i < _characters.Count; i++)
-            {
-                _characters[i].PrintInfo();
-            }
-        }
-
-    }
-
-    class Character
-    {
-        private string _name;
-
-        public Character(string name)
-        {
-            _name = name;
-        }
-
-        public void PrintInfo()
-        {
-            Console.WriteLine($"Имя пернажа {_name}");
-        }
-    }
-
-
 }
+
+
+
+
+
+
+
 
 
