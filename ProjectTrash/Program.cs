@@ -1,37 +1,87 @@
 ﻿namespace ProjectTrash
 {
+
+    public interface IWeapon
+    {
+        void Fire();
+    }
+
+    public interface IThrowingWeapon : IWeapon
+    {
+        void Throw();
+    }
+
+    internal class Gun : IWeapon
+    {
+        public void Fire()
+        {
+            Console.WriteLine($"{GetType().Name}: Пыщ!");
+        }
+    }
+
+    internal class LaserGun : IWeapon
+    {
+        public void Fire()
+        {
+            Console.WriteLine($"{GetType().Name}: Пиу!");
+        }
+    }
+
+    internal class Bow : IWeapon
+    {
+        public void Fire()
+        {
+            Console.WriteLine($"{GetType().Name}: Шпоуньк!");
+        }
+    }
+
+
+    internal class Knife : IThrowingWeapon
+    {
+        public void Fire()
+        {
+            Console.WriteLine($"{GetType().Name}: Хыщ!");
+        }
+
+        public void Throw()
+        {
+            Console.WriteLine($"{GetType().Name}: Фьють!");
+        }
+    }
+
+    internal class Player
+    {
+        public void Fire(IWeapon weapon)
+        {
+            weapon.Fire();
+        }
+
+        public void Throw(IThrowingWeapon throwingWeapon)
+        {
+            throwingWeapon.Throw();
+        }
+    }
+
+
     internal class Program
     {
         static void Main(string[] args)
         {
-            Player player = new Player("Kamper", 80);
-            player.ShowInfo();
-        }
-    }
+            Player player = new Player();
 
-    class Player
-    {
-        private string Name { get; }
-        private int _level;
-        public int Level
-        {
-            get
+            List<IWeapon> inventory = new List<IWeapon>() {new Gun(), new LaserGun(), new Bow(), new Knife() };
+
+            foreach (var item in inventory)
             {
-                return _level;
+                player.Fire(item);
+                Console.WriteLine();
             }
-            private set { _level = value; }
-        }
 
-        public Player(string name, int level)
-        {
-            Name = name;
-            Level = level;
-        }
+            player.Throw(new Knife());
 
-        public void ShowInfo()
-        {
-            Console.WriteLine($"Ник: {Name}\nУровень персонажа: {Level}");
         }
     }
+
+
 
 }

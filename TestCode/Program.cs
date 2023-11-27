@@ -6,71 +6,110 @@ using TestCode;
 
 namespace TestCode
 {
-
-    public abstract class Alcohol
+    public interface IFirstInterface
     {
-        public virtual string State { get; set; }
-
-        public Alcohol(string state)
-        {
-            State = state;
-        }
+        public void Action();
     }
 
-    public class Zero : Alcohol
+    public interface ISeconInterface
     {
-        public Zero() : base("Трезв")
-        {
-        }
-    }
-
-    public class Low : Alcohol
-    {
-        public Low() : base("Немного пьян")
-        {
-        }
-    }
-
-    public class High : Alcohol
-    {
-        public High() : base("пьян")
-        {
-        }
+        public void Action();
     }
 
 
-    internal class Measurement
+    internal class MyClass : IFirstInterface, ISeconInterface
     {
-        public string Name { get; set; }
-        public Alcohol Alcohol { get; set; }
+        public void Action()
+        {
+            Console.WriteLine("MyClass Action...");
+        }
+    }
+
+    internal class MyOtherClass : IFirstInterface, ISeconInterface
+    {
+        void IFirstInterface.Action()
+        {
+            Console.WriteLine("MyOtherClass IFirstInterface.Action...");
+        }
+
+        void ISeconInterface.Action()
+        {
+            Console.WriteLine("MyOtherClass ISecondInterface.Actoin...");
+        }
+    }
+
+
+    internal class Animal
+    {
+        public virtual void Roar()
+        {
+            Console.WriteLine("Абстрактный крик");
+        }
+    }
+
+    internal class Cat : Animal
+    {
+        public override void Roar()
+        {
+            Console.WriteLine("Miu");
+        }
     }
 
 
     internal class Program
     {
-
-        public static List<Alcohol> Alcohols = new List<Alcohol>()
-        {
-            new Zero(),
-            new Low(),
-            new High()
-        };
-
         static void Main(string[] args)
         {
-            var alcoholState = GetAlchoholState<High>();
+            MyClass myClass = new MyClass();
 
-            Console.WriteLine(alcoholState.State);
+            Foo(myClass);
+            Bar(myClass);
+
+            Console.WriteLine("********\n");
+            MyOtherClass myOtherClass = new MyOtherClass();
+
+            Foo(myOtherClass); 
+            Bar(myOtherClass);
+
+            Console.WriteLine("********\n");
+
+            ((IFirstInterface)myOtherClass).Action();
+            ((ISeconInterface)myOtherClass).Action();
+
+
+            Animal animal = new Cat();
+
+            if (animal is Cat cat)
+            {
+                cat.Roar();
+            }
+
+            
+            if (myOtherClass is IFirstInterface firstInterface)
+            {
+                firstInterface.Action();
+            }
+            
+            
+
+
         }
 
-        public static T GetAlchoholState<T>() where T : Alcohol
+        static void Foo(IFirstInterface firstInterface)
         {
-            var s = Alcohols.FirstOrDefault(s => s.GetType() == typeof(T));
-
-            return s as T;
-            //return Activator.CreateInstance<T>();
+            firstInterface.Action();
         }
+
+        static void Bar(ISeconInterface seconInterface)
+        {
+            seconInterface.Action();    
+        }
+
     }
+
+
+
+
 }
 
 
