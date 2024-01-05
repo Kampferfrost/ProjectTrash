@@ -19,9 +19,9 @@ namespace TestCode
             consoleLogger.Log(LogLevel.Warning, "some warning");
             consoleLogger.Log(LogLevel.Fatal, "some fatal error");
 
-            Console.WriteLine(LogLevel.Debug.ToString);
+            Console.WriteLine(LogLevel.Debug);
 
-
+            consoleLogger.Foo();
         }
 
     }

@@ -13,10 +13,17 @@ namespace TestCode
             switch (logLevel)
             {
                 case LogLevel.Debug:
-                    Console.ForegroundColor = ConsoleColor.Green; 
+                    Console.ForegroundColor = ConsoleColor.Green;
                     break;
-                default:
+                case LogLevel.Warning:
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                case LogLevel.Fatal:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+
+                default:
+                    Console.ForegroundColor = ConsoleColor.White;
                     break;
             }
             Console.WriteLine($"{DateTime.Now}: {message}");
