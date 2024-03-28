@@ -6,13 +6,14 @@
         {
 
 
-            PlayerData PlayerData = new PlayerData();
+            PlayerDataAbstract PlayerData = new PlayerDataAbstract();
 
             PlayerData.WorkData = true;
-
+            ;
 
             PlayerData.Work();
 
+            
 
 
         }
@@ -25,10 +26,38 @@
 
         public void ShowMainMenu()
         {
-            Console.WriteLine(MenuText);
             Console.WriteLine(MenuCommand);
+            Console.WriteLine();
+
+            Console.WriteLine(MenuText);
+            Console.WriteLine();
+
+        }
+
+        public void ShowAllPlayer(List<Player> players)
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                players[i].ShowInfo();
+            }
+        }
+
+
+        public void ShowExit()
+        {
+            Console.Clear();
+            Console.WriteLine("Выход из программы");
+            Console.WriteLine("Нажмите любую клавишу чтобы выйти из программы");
         }
     }
+
+
+
+
+
+
+
+
 
 
 }
