@@ -1,13 +1,16 @@
-﻿namespace PlayerDataBase1
+﻿using PlayerDataBase1.Commands;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace PlayerDataBase1
 {
     public class PlayerDataAbstract : IPlayerData
     {
         private bool _workData = true;
-
         public int SerialNumber { get; }
         public string Name { get; } = "Name";
         public int Level { get; }
         public bool Ban { get; }
+
 
         public bool WorkData
         {
@@ -35,14 +38,22 @@
 
 
 
-        
+        private List<CommandMenu> _commandMenus = new List<CommandMenu>()
+        {
+            new AddCommand(),
+            new RemoveCommand(),
+            new BadCommand(),
+            new ExitCommand()
+        };
 
 
 
         public void Work()
         {
 
-            
+
+
+
             while (WorkData)
             {
 
@@ -50,33 +61,40 @@
 
                 mainMenu.ShowAllPlayer(_players);
 
-                Command exitCommand = new ExitCommand();
-                exitCommand.Execute(this);
+                int Number = Convert.ToInt32(Console.ReadLine());
 
-                Command AddCommand = new AddCommand();
-                AddCommand.Execute(this);
-
-
-                switch (Convert.ToInt32(Console.ReadLine()))
+                foreach (var item in _commandMenus)
                 {
-                    case 1:
-                        AddPlayer();
+                    if (item.Id == Number)
+                    {
+                        item.Execute(this);
                         break;
-                    case 2:
-                        BanPlayer();
-                        break;
-                    case 3:
-                        RemovePlayer();
-                        break;
-                    case 4:
-                        ExitApp();
-                        break;
-                    default:
-                        break;
+                    }
+
                 }
 
 
-                
+
+                //switch (Convert.ToInt32(Console.ReadLine()))
+                //{
+                //    case 1:
+                //        AddCommand.Execute(this);
+                //        break;
+                //    case 2:
+                //        BanPlayer();
+                //        break;
+                //    case 3:
+                //        exitCommand.Execute(this);
+                //        break;
+                //    case 4:
+                //        ExitApp();
+                //        break;
+                //    default:
+                //        break;
+                //}
+
+
+
                 Console.ReadKey();
                 Console.Clear();
             }
@@ -111,9 +129,22 @@
             Console.Clear();
             Console.WriteLine("Забанить Игрока");
 
-            _players[4].SetStatusBan(true);
+            Console.WriteLine("Введите номер игрока");
+            int serialNumber = Convert.ToInt32(Console.ReadLine());
 
-            
+            foreach (var player in _players)
+            {
+                if (player.SerialNumber == serialNumber)
+                {
+                    player.SetStatusBan(true);
+                    break;
+                }
+
+            }
+
+            _players[serialNumber].SetStatusBan(true);
+
+
 
         }
 
@@ -123,19 +154,15 @@
         }
 
         public void ExitApp()
-        {   
-            
+        {
+
             WorkData = false;
             mainMenu.ShowExit();
         }
 
-        public void AddCoomand()
-        {
-            Console.WriteLine("PlayerData.AddCommand");
-        }
-        
 
-        public void RemovePlayer() 
+
+        public void RemovePlayer()
         {
             Console.Clear();
             Console.WriteLine("Удаляем игрока");
