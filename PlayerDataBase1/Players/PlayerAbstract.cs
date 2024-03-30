@@ -1,4 +1,4 @@
-﻿namespace PlayerDataBase1
+﻿namespace PlayerDataBase1.Players
 {
     abstract class PlayerAbstract : IPerson
     {
@@ -31,7 +31,7 @@
     {
         public Player(int serialNumber, string name, int level, bool ban) : base(serialNumber, name, level, ban)
         {
-            
+
         }
     }
 

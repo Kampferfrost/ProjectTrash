@@ -1,4 +1,5 @@
 ﻿using PlayerDataBase1.Commands;
+using PlayerDataBase1.Players;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PlayerDataBase1
@@ -6,11 +7,6 @@ namespace PlayerDataBase1
     public class PlayerDataAbstract : IPlayerData
     {
         private bool _workData = true;
-        public int SerialNumber { get; }
-        public string Name { get; } = "Name";
-        public int Level { get; }
-        public bool Ban { get; }
-
 
         public bool WorkData
         {
@@ -18,7 +14,6 @@ namespace PlayerDataBase1
             {
                 _workData = value;
             }
-
             get
             {
                 return _workData;
@@ -33,7 +28,6 @@ namespace PlayerDataBase1
             new Player(2, "Reimu", 58, false),
             new Player(3, "Tigr", 28, false),
             new Player(4, "PowerPidor", 120, true)
-
         };
 
 
@@ -41,39 +35,31 @@ namespace PlayerDataBase1
         private List<CommandMenu> _commandMenus = new List<CommandMenu>()
         {
             new AddCommand(),
+            new BanCommand(),
             new RemoveCommand(),
-            new BadCommand(),
             new ExitCommand()
         };
-
 
 
         public void Work()
         {
 
-
-
-
             while (WorkData)
             {
-
                 mainMenu.ShowMainMenu();
-
                 mainMenu.ShowAllPlayer(_players);
 
                 int Number = Convert.ToInt32(Console.ReadLine());
 
-                foreach (var item in _commandMenus)
+                foreach (var command in _commandMenus)
                 {
-                    if (item.Id == Number)
+                    if (command.Id == Number)
                     {
-                        item.Execute(this);
+                        command.Execute(this);
                         break;
                     }
 
                 }
-
-
 
                 //switch (Convert.ToInt32(Console.ReadLine()))
                 //{
@@ -92,8 +78,6 @@ namespace PlayerDataBase1
                 //    default:
                 //        break;
                 //}
-
-
 
                 Console.ReadKey();
                 Console.Clear();
@@ -128,6 +112,8 @@ namespace PlayerDataBase1
         {
             Console.Clear();
             Console.WriteLine("Забанить Игрока");
+            mainMenu.ShowAllPlayer(_players);
+            Console.WriteLine();
 
             Console.WriteLine("Введите номер игрока");
             int serialNumber = Convert.ToInt32(Console.ReadLine());
@@ -139,23 +125,11 @@ namespace PlayerDataBase1
                     player.SetStatusBan(true);
                     break;
                 }
-
             }
-
-            _players[serialNumber].SetStatusBan(true);
-
-
-
-        }
-
-        public void CommandSwitch()
-        {
-
         }
 
         public void ExitApp()
         {
-
             WorkData = false;
             mainMenu.ShowExit();
         }
@@ -172,6 +146,22 @@ namespace PlayerDataBase1
 
             Console.WriteLine();
             Console.WriteLine("Введите номер удаляемого игрока");
+
+            int serialNumber = Convert.ToInt32(Console.ReadLine());
+
+
+            foreach (var player in _players)
+            {
+                if (player.SerialNumber == serialNumber)
+                {
+                    
+                    break;
+                }
+            }
+
+            _players.RemoveAt(1);
+
+            //недописано 
 
 
 

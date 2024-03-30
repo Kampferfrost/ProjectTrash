@@ -1,20 +1,16 @@
-﻿namespace PlayerDataBase1
+﻿using PlayerDataBase1.Players;
+
+namespace PlayerDataBase1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
 
-
             PlayerDataAbstract PlayerData = new PlayerDataAbstract();
 
             PlayerData.WorkData = true;
-            ;
-
             PlayerData.Work();
-
-            
-
 
         }
     }
@@ -31,7 +27,6 @@
 
             Console.WriteLine(MenuText);
             Console.WriteLine();
-
         }
 
         public void ShowAllPlayer(List<Player> players)
@@ -41,7 +36,6 @@
                 players[i].ShowInfo();
             }
         }
-
 
         public void ShowExit()
         {
