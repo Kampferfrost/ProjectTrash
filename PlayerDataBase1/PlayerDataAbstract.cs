@@ -49,38 +49,29 @@ namespace PlayerDataBase1
                 mainMenu.ShowMainMenu();
                 mainMenu.ShowAllPlayer(_players);
 
-                int Number = Convert.ToInt32(Console.ReadLine());
+                int setNumberCommand;
 
-                foreach (var command in _commandMenus)
+                if(int.TryParse(Console.ReadLine(), out setNumberCommand))
                 {
-                    if (command.Id == Number)
+                    foreach (var command in _commandMenus)
                     {
-                        command.Execute(this);
-                        break;
+                        if (command.Id == setNumberCommand)
+                        {
+                            command.Execute(this);
+                            break;
+                        }
                     }
 
+                    Console.ReadKey();
+                    Console.Clear();
+                    
                 }
+                else
+                {
+                    Console.Clear();
+                    continue;
 
-                //switch (Convert.ToInt32(Console.ReadLine()))
-                //{
-                //    case 1:
-                //        AddCommand.Execute(this);
-                //        break;
-                //    case 2:
-                //        BanPlayer();
-                //        break;
-                //    case 3:
-                //        exitCommand.Execute(this);
-                //        break;
-                //    case 4:
-                //        ExitApp();
-                //        break;
-                //    default:
-                //        break;
-                //}
-
-                Console.ReadKey();
-                Console.Clear();
+                }            
             }
         }
 
@@ -102,7 +93,6 @@ namespace PlayerDataBase1
             serialNumber = _players.Count + 1;
 
             _players.Add(new Player(serialNumber, name, level, false));
-
 
             Console.WriteLine($"Игрок {name} добавлен");
 
@@ -128,16 +118,9 @@ namespace PlayerDataBase1
             }
         }
 
-        public void ExitApp()
-        {
-            WorkData = false;
-            mainMenu.ShowExit();
-        }
-
-
-
         public void RemovePlayer()
         {
+
             Console.Clear();
             Console.WriteLine("Удаляем игрока");
 
@@ -149,23 +132,35 @@ namespace PlayerDataBase1
 
             int serialNumber = Convert.ToInt32(Console.ReadLine());
 
+            string name = "";
 
             foreach (var player in _players)
             {
                 if (player.SerialNumber == serialNumber)
                 {
-                    
+                    name = player.Name;
+                    _players.Remove(player);
                     break;
                 }
             }
 
-            _players.RemoveAt(1);
+            Console.WriteLine();
+            Console.WriteLine($"Игрок {name} удален"); ;
+
 
             //недописано 
 
-
-
         }
+
+        public void ExitApp()
+        {
+            WorkData = false;
+            mainMenu.ShowExit();
+        }
+
+
+
+        
 
 
 

@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{B4FCEA7F-8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{3A14534E-C264-4D63-A9D2-0DD455D6B45D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExamplesFromSector", "ExamplesFromSector", "{00D66804-D973-427D-9DE2-1735B73D9692}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExamplesFromSektor", "ExamplesFromSektor", "{00D66804-D973-427D-9DE2-1735B73D9692}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwitchAndInheritance", "SwitchAndInheritance\SwitchAndInheritance.csproj", "{F67F9190-7303-4BFB-A469-A5946850F3C1}"
 EndProject
@@ -47,7 +47,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerDataBase1", "PlayerDa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalSwitches", "AnimalSwitches\AnimalSwitches.csproj", "{82A7AE79-2575-45AC-B652-2CD180A0AB49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPlayers", "DataPlayers\DataPlayers.csproj", "{62C2DA50-64CC-493B-ADB8-85C3DCAC71F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPlayers", "DataPlayers\DataPlayers.csproj", "{62C2DA50-64CC-493B-ADB8-85C3DCAC71F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
