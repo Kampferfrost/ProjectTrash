@@ -5,20 +5,20 @@
     {
         static void Main(string[] args)
         {
-            int number;
-            Console.WriteLine("Введите число");
+            //string[] people = { "Tom", "Bob", "Sam", "Sektor", "Naruto", "Tim", "Tomas", "Bill"};
 
-            if(int.TryParse(Console.ReadLine(), out number))
-            {
-                Console.Clear();
-                Console.WriteLine($"Номер {number}");
-            }
-            else
-            {
-                Console.Clear();
-                Console.WriteLine("Некорректный ввод числа");
+            //var selectPeople = from p in people
+            //                   where p.ToUpper().StartsWith("T")
+            //                   orderby p
+            //                   select p;
 
-            }
+            //foreach (string person in selectPeople)
+            //{
+            //    Console.WriteLine(person);
+            //}
+                
+
+
 
 
 

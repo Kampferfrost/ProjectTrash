@@ -1,22 +1,28 @@
-﻿using System.Net;
-using System.Runtime.InteropServices;
-using System;
-using System.Security.Cryptography.X509Certificates;
-using TestCode;
-using System.Numerics;
-using System.Reflection.Emit;
-using System.Collections;
+﻿using DataPlayers.Models;
+using DataPlayers.Services;
 
-namespace TestCode
+namespace DataPlayers
 {
 
 
 
     internal class Program
     {
+        static private ServerPlatform platform;
+
         static void Main(string[] args)
         {
-            
+            ServerRate serverRate1 = new ServerRate() { ExpRate = 1, GoldRate = 1, HonorRate = 1, StartLevel = 1 };
+            Server server1 = new Server(serverRate1, "WotLK x1");
+
+            ServerRate serverRate100 = new ServerRate() { ExpRate = 100, GoldRate = 100, HonorRate = 100, StartLevel = 1 };
+            Server server2 = new Server(serverRate100, "WotLK x100");
+
+            ServerRate serverRateFun = new ServerRate() { ExpRate = 1, GoldRate = 1, HonorRate = 1, StartLevel = 80 };
+            Server server3 = new Server(serverRateFun, "WotLK FUN");
+
+            List<Server> servers = new List<Server>() { server1, server2, server3 };
+            platform = new ServerPlatform(servers, "Warcraft.by");
 
             Console.WriteLine("Список игроков");
             List<Player> _players = new List<Player>()
@@ -30,6 +36,40 @@ namespace TestCode
                 new Player() {SerialNumber = 3, Name = "Пидор", Level = 60, Ban = true,Rating = 2700, Dps = 5000},
 
             };
+
+            foreach (var player in _players)
+            {
+                server1.AddPlayer(player);
+            }
+
+            Console.WriteLine($"Сервер: {server1.Name} Игроки:");
+            foreach (var playerName in server1.GetPlayerNames())
+            {
+                Console.WriteLine(playerName);
+            }
+
+
+            Console.WriteLine("\nDPS Игроков");
+            foreach (var playerDPS in server1.GetDPS())
+            {
+                Console.WriteLine(playerDPS);
+            }
+
+            Console.WriteLine("\nСуммарный ДПС Игкроков");
+            Console.WriteLine(server1.GetAllDPSPlayers());
+
+            Console.WriteLine("\nСамый большой ДПС: ");
+            var playerWithMaxDps = server1.GetPlayerMaxDps();
+            Console.WriteLine(playerWithMaxDps.Name);
+            Console.WriteLine(playerWithMaxDps.Dps);
+
+
+            //OldMethod(_players);
+
+        }
+
+        private static void OldMethod(List<Player> _players)
+        {
             foreach (var player in _players)
             {
                 Console.WriteLine(player.GetType().Name);
@@ -38,11 +78,11 @@ namespace TestCode
             }
 
             List<Player> listBanPlayers = new List<Player>();
-            
+
             //1500 до 1800
             List<Player> raitingList = new List<Player>();
 
-            Console.WriteLine(); 
+            Console.WriteLine();
             Console.WriteLine();
 
             foreach (var player in _players)
@@ -55,34 +95,13 @@ namespace TestCode
                 if (player.Rating >= 200 && player.Rating <= 2000)
                 {
                     raitingList.Add(player);
-                } 
+                }
             }
             Console.WriteLine();
             Console.WriteLine("Список игроков с рейтингом с 1500 до 1800");
             Console.WriteLine();
             Console.WriteLine("Список игроков сервера");
-
-            Server server = new Server(_players.ToArray());
-
-            var PlayerNames = server.GetPlayerNames();
-
-            foreach (var player in PlayerNames)
-            {
-                Console.WriteLine(player + " ");
-            }
-
-            Console.WriteLine();
-            var BannedPlayers = server.GetBannedPlayers();
-
-            foreach (var player in BannedPlayers)
-            {
-                Console.WriteLine("Забанен "+ player.Name);
-            }
-
         }
-
-
-
     }
 
 
