@@ -1,5 +1,6 @@
 ﻿using DataPlayers.Models;
 using DataPlayers.Services;
+using System.Net.Security;
 
 namespace DataPlayers
 {
@@ -20,16 +21,16 @@ namespace DataPlayers
 
             ServerRate serverRateFun = new ServerRate() { ExpRate = 1, GoldRate = 1, HonorRate = 1, StartLevel = 80 };
             Server server3 = new Server(serverRateFun, "WotLK FUN");
-
+            
             List<Server> servers = new List<Server>() { server1, server2, server3 };
             platform = new ServerPlatform(servers, "Warcraft.by");
-
-            Console.WriteLine("Список игроков");
+            
+            Console.WriteLine("Список игроков из Main List\n");
             List<Player> _players = new List<Player>()
             {
                 new Player() {SerialNumber = 1, Name = "Хлеб", Level = 60, Ban = false, Rating = 120, Dps = 60 },
                 new Player() {SerialNumber = 2, Name = "Хикита", Level = 60, Ban = false,Rating = 700, Dps = 1000 },
-                new Player() {SerialNumber = 3, Name = "Слэм", Level = 60, Ban = true ,Rating = 2350, Dps = 18567},
+                new Player() {SerialNumber = 3, Name = "Слэм", Level = 60, Ban = false ,Rating = 2350, Dps = 18567},
                 new Player() {SerialNumber = 3, Name = "Гэля", Level = 60, Ban = false ,Rating = 1900, Dps = 70},
                 new Player() {SerialNumber = 3, Name = "Ира", Level = 60, Ban = true,Rating = 0, Dps = 10},
                 new Player() {SerialNumber = 3, Name = "Корова", Level = 60, Ban = false, Rating = 500, Dps = 480},
@@ -42,23 +43,31 @@ namespace DataPlayers
                 server1.AddPlayer(player);
             }
 
+            server1.SetPlayerStatusBan("Корова");
+            server1.SetPlayerStatusUnbanned("Пидор");
+
             Console.WriteLine($"Сервер: {server1.Name} Игроки:");
             foreach (var playerName in server1.GetPlayerNames())
             {
                 Console.WriteLine(playerName);
             }
+            Console.WriteLine($"\nСписок забанненых игроков на сервере {server1.Name}:");
+            foreach (var players in server1.GetBannedPlayers())
+            {
+                Console.WriteLine(players.Name);
+            }
 
 
-            Console.WriteLine("\nDPS Игроков");
+            Console.WriteLine($"\nDPS Игроков {server1.Name}:");
             foreach (var playerDPS in server1.GetDPS())
             {
                 Console.WriteLine(playerDPS);
             }
-
-            Console.WriteLine("\nСуммарный ДПС Игкроков");
+            
+            Console.WriteLine($"\nСуммарный ДПС Игкроков {server1.Name}:");
             Console.WriteLine(server1.GetAllDPSPlayers());
 
-            Console.WriteLine("\nСамый большой ДПС: ");
+            Console.WriteLine($"\nСамый большой ДПС {server1.Name}: ");
             var playerWithMaxDps = server1.GetPlayerMaxDps();
             Console.WriteLine(playerWithMaxDps.Name);
             Console.WriteLine(playerWithMaxDps.Dps);
@@ -77,7 +86,6 @@ namespace DataPlayers
                 Player.ShowRoar();
             }
 
-            List<Player> listBanPlayers = new List<Player>();
 
             //1500 до 1800
             List<Player> raitingList = new List<Player>();

@@ -5,7 +5,7 @@
     /// </summary>
     internal class ServerPlatform
     {
-        public List<Server> Servers { get; }
+        private List<Server> Servers { get; }
         public string Name { get; private set; } = "NoName";
         
 
