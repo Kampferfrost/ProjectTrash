@@ -153,6 +153,7 @@ namespace DataPlayers
             if (player.Ban == false)
             {
                 player.Ban = true;
+                player.BannedTime = DateTime.Now;
                 banStatus = $"Игрок {player.Name} Забанен";
             }
             else

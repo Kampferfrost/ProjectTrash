@@ -32,7 +32,7 @@ namespace DataPlayers
                 new Player() {SerialNumber = 2, Name = "Хикита", Level = 60, Ban = false,Rating = 700, Dps = 1000, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue },
                 new Player() {SerialNumber = 3, Name = "Слэм", Level = 60, Ban = false ,Rating = 2350, Dps = 18567, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue},
                 new Player() {SerialNumber = 3, Name = "Гэля", Level = 60, Ban = false, Rating = 1900, Dps = 70, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue},
-                new Player() {SerialNumber = 3, Name = "Ира", Level = 60, Ban = true,Rating = 0, Dps = 10, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue},
+                new Player() {SerialNumber = 3, Name = "Ира", Level = 60, Ban = true,Rating = 0, Dps = 10, BannedTime = new DateTime(2023, 08, 25), EndBanTime = DateTime.MinValue},
                 new Player() {SerialNumber = 3, Name = "Корова", Level = 60, Ban = false, Rating = 500, Dps = 480, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue},
                 new Player() {SerialNumber = 3, Name = "Пидор", Level = 60, Ban = true, Rating = 2700, Dps = 5000, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue},
 
@@ -54,7 +54,16 @@ namespace DataPlayers
             Console.WriteLine($"\nСписок забанненых игроков на сервере {server1.Name}:");
             foreach (var players in server1.GetBannedPlayers())
             {
-                Console.WriteLine(players.Name);
+                string dateBanned = "";
+                if(players.BannedTime == DateTime.MinValue)
+                {
+                    dateBanned = "Нет даты";
+                }
+                else
+                {
+                    dateBanned = Convert.ToString(players.BannedTime);
+                }
+                Console.WriteLine($"{players.Name} Дата Бана: {dateBanned}");
             }
 
 
