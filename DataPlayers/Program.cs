@@ -21,20 +21,20 @@ namespace DataPlayers
 
             ServerRate serverRateFun = new ServerRate() { ExpRate = 1, GoldRate = 1, HonorRate = 1, StartLevel = 80 };
             Server server3 = new Server(serverRateFun, "WotLK FUN");
-            
+
             List<Server> servers = new List<Server>() { server1, server2, server3 };
             platform = new ServerPlatform(servers, "Warcraft.by");
-            
+
             Console.WriteLine("Список игроков из Main List\n");
             List<Player> _players = new List<Player>()
             {
-                new Player() {SerialNumber = 1, Name = "Хлеб", Level = 60, Ban = false, Rating = 120, Dps = 60 },
-                new Player() {SerialNumber = 2, Name = "Хикита", Level = 60, Ban = false,Rating = 700, Dps = 1000 },
-                new Player() {SerialNumber = 3, Name = "Слэм", Level = 60, Ban = false ,Rating = 2350, Dps = 18567},
-                new Player() {SerialNumber = 3, Name = "Гэля", Level = 60, Ban = false ,Rating = 1900, Dps = 70},
-                new Player() {SerialNumber = 3, Name = "Ира", Level = 60, Ban = true,Rating = 0, Dps = 10},
-                new Player() {SerialNumber = 3, Name = "Корова", Level = 60, Ban = false, Rating = 500, Dps = 480},
-                new Player() {SerialNumber = 3, Name = "Пидор", Level = 60, Ban = true,Rating = 2700, Dps = 5000},
+                new Player() {SerialNumber = 1, Name = "Хлеб", Level = 60, Ban = false, Rating = 120, Dps = 60, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue },
+                new Player() {SerialNumber = 2, Name = "Хикита", Level = 60, Ban = false,Rating = 700, Dps = 1000, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue },
+                new Player() {SerialNumber = 3, Name = "Слэм", Level = 60, Ban = false ,Rating = 2350, Dps = 18567, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue},
+                new Player() {SerialNumber = 3, Name = "Гэля", Level = 60, Ban = false, Rating = 1900, Dps = 70, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue},
+                new Player() {SerialNumber = 3, Name = "Ира", Level = 60, Ban = true,Rating = 0, Dps = 10, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue},
+                new Player() {SerialNumber = 3, Name = "Корова", Level = 60, Ban = false, Rating = 500, Dps = 480, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue},
+                new Player() {SerialNumber = 3, Name = "Пидор", Level = 60, Ban = true, Rating = 2700, Dps = 5000, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue},
 
             };
 
@@ -63,7 +63,7 @@ namespace DataPlayers
             {
                 Console.WriteLine(playerDPS);
             }
-            
+
             Console.WriteLine($"\nСуммарный ДПС Игкроков {server1.Name}:");
             Console.WriteLine(server1.GetAllDPSPlayers());
 

@@ -8,6 +8,9 @@
         public bool Ban { get; set; }
         public int Rating { get; set; }
         public decimal Dps { get; set; }
+        public DateTime BannedTime { get; set; }
+        public DateTime EndBanTime { get; set; }
+
 
         public static void ShowRoar()
         {

@@ -5,24 +5,29 @@
     {
         static void Main(string[] args)
         {
-            //string[] people = { "Tom", "Bob", "Sam", "Sektor", "Naruto", "Tim", "Tomas", "Bill"};
+            DateTime timeNow = DateTime.MinValue;
 
-            //var selectPeople = from p in people
-            //                   where p.ToUpper().StartsWith("T")
-            //                   orderby p
-            //                   select p;
+            Console.WriteLine(timeNow);
 
-            //foreach (string person in selectPeople)
-            //{
-            //    Console.WriteLine(person);
-            //}
-                
+
+
+
+
+
+
 
 
 
 
 
         }
+    }
+
+    internal class Player
+    {
+        public string Name { get; set; }
+        public DateTime BanTime { get; set; }
+
     }
 
 
