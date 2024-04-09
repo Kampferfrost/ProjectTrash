@@ -26,13 +26,23 @@ namespace Store
                 store1.AddProduct(productStore);
             }
 
-            Console.WriteLine(store1.GetStoreName());
+            Console.WriteLine(store1.StoreName);
 
             foreach (var productStore in store1.GetListProductsStore())
             {
                 Console.WriteLine(productStore.Name);
             }
 
+
+            Customer customer = new Customer(new Player() {Name = "Hikita", Gold = 2500 });
+
+            Console.WriteLine(customer.Player.Name);
+
+
+
+            customer.Player.Name = "Tiger"; //почему принял?
+
+            Console.WriteLine(customer.Player.Name);
 
         }
     }

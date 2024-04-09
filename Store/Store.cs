@@ -4,7 +4,7 @@ namespace Store
 {
     internal class Store
     {
-        private List<Model.ProductStore> _products = new List<Model.ProductStore>();
+        private List<ProductStore> _productsStore = new List<ProductStore>();
 
 
        
@@ -19,37 +19,49 @@ namespace Store
 
         public string StoreName { get; private set; }
 
-        public string GetStoreName()
-        {
-            return StoreName;
-        }
 
         #endregion
 
         #region ProductsStore
         public void AddProduct(ProductStore productStore)
         {
-            foreach(var product in _products)
+            foreach(var product in _productsStore)
             {
                 if (productStore.Name == product.Name)
                 {
                     return;
                 }
             }
-            _products.Add(productStore);
+            _productsStore.Add(productStore);
         }
 
         public List<ProductStore> GetListProductsStore() 
         {
             List<ProductStore> productStore = new List<ProductStore>();
-            foreach( var product in _products)
+            foreach( var product in _productsStore)
             {
                 productStore.Add(product);
             }
             return productStore;
-
         }
 
+        /// <summary>
+        /// Поиск предмета по имени в List
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public ProductStore GetProduct(string name) 
+        {
+            ProductStore productStore = _productsStore[0];
+            foreach(var product in _productsStore)
+            {
+                if (product.Name == name) 
+                { 
+                    productStore = product;
+                }
+            }
+            return productStore;
+        }
 
         #endregion
 
