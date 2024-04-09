@@ -1,6 +1,4 @@
 ﻿using DataPlayers.Models;
-using System.Numerics;
-using System.Xml.Linq;
 
 namespace DataPlayers
 {
@@ -33,7 +31,7 @@ namespace DataPlayers
 
         #endregion
 
-        #region Name
+        #region ServerName
 
         public string Name { get; private set; } = "Warcraft.by";
 
@@ -53,7 +51,7 @@ namespace DataPlayers
         #region Players
 
         /// <summary>
-        /// Игроки пидоры не донатят
+        /// Игроки не донатят
         /// </summary>
         private List<Player> _players = new List<Player>();
 
@@ -139,7 +137,6 @@ namespace DataPlayers
                     bannedPlayers.Add(player);
                 }
             }
-
             return bannedPlayers;
         }
 
