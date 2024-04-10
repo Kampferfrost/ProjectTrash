@@ -1,6 +1,6 @@
 ﻿namespace Store.Commands
 {
-    internal abstract class Command : ICommandMenu
+    internal abstract class CommandMenu : ICommandMenu
     {
         public int IdCommand { get; set; }
 

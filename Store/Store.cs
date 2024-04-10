@@ -1,5 +1,6 @@
 ﻿using Store.Model;
 using Store.View;
+using Store.Commands;
 
 namespace Store
 {
@@ -20,21 +21,48 @@ namespace Store
         {
             IsOpen = false;
         }
-
         #endregion
+
+        private List<ICommandMenu> _commandMenus = new List<ICommandMenu>()
+        {
+            new LookProductsStore(),
+            new LookPlayerItems(),
+        };
+
+        #region WorkStore
 
         public void Work(bool isOpen)
         {
             IsOpen = isOpen;
+            int setNumberCommand;
             ViewerMenu viewerMenu = new ViewerMenu(StoreName);
 
-            while(IsOpen)
+
+
+
+
+
+            while (IsOpen)
             {
                 viewerMenu.ShowMenu();
+                if (int.TryParse(Console.ReadLine(), out setNumberCommand))
+                {
+                    foreach (var commandMenu in _commandMenus)
+                    {
+                        if (commandMenu.IdCommand == setNumberCommand)
+                        {
+                            commandMenu.Execute(this);
+                            break;
+                        }
+                    }
+                }
+                
                 Console.ReadKey();
                 Console.Clear();
             }
         }
+
+        #endregion
 
         public Store(string storename)
         {
@@ -63,12 +91,7 @@ namespace Store
 
         public List<ProductStore> GetListProductsStore()
         {
-            List<ProductStore> productStore = new List<ProductStore>();
-            foreach (var product in _productsStore)
-            {
-                productStore.Add(product);
-            }
-            return productStore;
+            return _productsStore;
         }
 
         /// <summary>
