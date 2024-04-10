@@ -1,4 +1,5 @@
 ﻿using Store.Model;
+using Store.View;
 
 namespace Store
 {
@@ -7,17 +8,42 @@ namespace Store
         private List<ProductStore> _productsStore = new List<ProductStore>();
 
 
-       
-        public Store(string storename) 
+        #region IsRunning
+        public bool IsOpen { get; private set; } = false;
+
+        public void OpenStore()
+        {
+            IsOpen = true;
+        }
+
+        public void CloseStore()
+        {
+            IsOpen = false;
+        }
+
+        #endregion
+
+        public void Work(bool isOpen)
+        {
+            IsOpen = isOpen;
+            ViewerMenu viewerMenu = new ViewerMenu(StoreName);
+
+            while(IsOpen)
+            {
+                viewerMenu.ShowMenu();
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }
+
+        public Store(string storename)
         {
             StoreName = storename;
         }
 
-
-
         #region StoreName
 
-        public string StoreName { get; private set; }
+        public string StoreName { get; private set; } = "sdf";
 
 
         #endregion
@@ -25,7 +51,7 @@ namespace Store
         #region ProductsStore
         public void AddProduct(ProductStore productStore)
         {
-            foreach(var product in _productsStore)
+            foreach (var product in _productsStore)
             {
                 if (productStore.Name == product.Name)
                 {
@@ -35,10 +61,10 @@ namespace Store
             _productsStore.Add(productStore);
         }
 
-        public List<ProductStore> GetListProductsStore() 
+        public List<ProductStore> GetListProductsStore()
         {
             List<ProductStore> productStore = new List<ProductStore>();
-            foreach( var product in _productsStore)
+            foreach (var product in _productsStore)
             {
                 productStore.Add(product);
             }
@@ -50,13 +76,13 @@ namespace Store
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public ProductStore GetProduct(string name) 
+        public ProductStore GetProduct(string name)
         {
             ProductStore productStore = _productsStore[0];
-            foreach(var product in _productsStore)
+            foreach (var product in _productsStore)
             {
-                if (product.Name == name) 
-                { 
+                if (product.Name == name)
+                {
                     productStore = product;
                 }
             }

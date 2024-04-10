@@ -16,8 +16,6 @@ namespace PlayerDataBase1.Commands
         public abstract int Id { get; set; }
         public abstract void Execute(PlayerDataAbstract playerData);
 
-
-
     }
 
 

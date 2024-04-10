@@ -6,12 +6,10 @@ namespace PlayerDataBase1
     {
         static void Main(string[] args)
         {
-
             PlayerDataAbstract PlayerData = new PlayerDataAbstract();
 
             PlayerData.WorkData = true;
             PlayerData.Work();
-
         }
     }
 

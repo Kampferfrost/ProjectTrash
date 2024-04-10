@@ -1,4 +1,5 @@
 ﻿using Store.Model;
+using Store.View;
 namespace Store
 {
     internal class Program
@@ -10,6 +11,13 @@ namespace Store
 
         static void Main(string[] args)
         {
+            Store store1 = new Store("Шестерочка");
+            bool isOpen = true;
+            
+
+            store1.Work(isOpen);
+
+
             List<ProductStore> productsStore = new List<ProductStore>()
             {
                 new ProductStore(){ Name = "Колбаса", Description = "Съедобная" },
@@ -18,31 +26,12 @@ namespace Store
                 new ProductStore(){ Name = "Кефир", Description = "А где батон?" },
                 new ProductStore(){ Name = "Батон", Description = "К нему нужно что-то еще?" },
             };
-
-            Store store1 = new Store("Шестерочка");
-            
             foreach (var productStore in productsStore)
             {
                 store1.AddProduct(productStore);
             }
 
-            Console.WriteLine(store1.StoreName);
-
-            foreach (var productStore in store1.GetListProductsStore())
-            {
-                Console.WriteLine(productStore.Name);
-            }
-
-
-            Customer customer = new Customer(new Player() {Name = "Hikita", Gold = 2500 });
-
-            Console.WriteLine(customer.Player.Name);
-
-
-
-            customer.Player.Name = "Tiger"; //почему принял?
-
-            Console.WriteLine(customer.Player.Name);
+           
 
         }
     }

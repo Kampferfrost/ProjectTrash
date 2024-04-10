@@ -4,7 +4,7 @@ namespace Store
 {
     internal class Customer
     {
-        public Player Player { get; private set; }
+        public Player Player { get; set; }
 
         public Customer(Player player) 
         {
