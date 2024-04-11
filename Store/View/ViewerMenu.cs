@@ -1,6 +1,4 @@
-﻿
-
-namespace Store.View
+﻿namespace Store.View
 {
     internal class ViewerMenu
     {
@@ -9,13 +7,39 @@ namespace Store.View
             StoreName = storeName;
         }
         public string StoreName { get; init; }
+        private List<string> _textMainMenu = new List<string>()
+        {
+            "Посмотреть товары магазина",
+            "Посмотреть свои товары"
+        };
 
-        public void ShowMenu()
+        private List<string> _textStoreMenu = new List<string>()
+        {
+            "Купить товар",
+            "Выйти из списка товаров"
+        };
+
+        public void ShowMainMenu(int numberCommand)
         {
             Console.WriteLine($"Магазин {StoreName}");
             Console.WriteLine("Выбирите действие:");
-            Console.WriteLine("1. Посмотреть товары магазина");
-            Console.WriteLine("2. Посмотреть свои предметы в сумке");
+            int numbering = 1;
+            if (numberCommand == 1) 
+            {
+                foreach (string text in _textMainMenu)
+                {
+                    Console.WriteLine($"{numbering++}. {text}");
+                }
+            }
+            if (numberCommand == 2)
+            {
+                foreach (string text in _textStoreMenu)
+                {
+                    Console.WriteLine($"{numbering++}. {text}");
+                }
+            }
+            
+            
 
         }
     }

@@ -30,22 +30,29 @@ namespace Store
         };
 
         #region WorkStore
+        private int numberCommand = 0;
+        public int NumberCommand 
+        {
+            get
+            {
+                return numberCommand;
+            }
 
+        }
         public void Work(bool isOpen)
         {
             IsOpen = isOpen;
-
-            int setNumberCommand;
+            
             ViewerMenu viewerMenu = new ViewerMenu(StoreName);
             while (IsOpen)
             {
-                viewerMenu.ShowMenu();
+                viewerMenu.ShowMainMenu(numberCommand);
 
-                if (int.TryParse(Console.ReadLine(), out setNumberCommand))
+                if (int.TryParse(Console.ReadLine(), out numberCommand))
                 {
                     foreach (var commandMenu in _commandMenus)
                     {
-                        if (commandMenu.IdCommand == setNumberCommand)
+                        if (commandMenu.IdCommand == NumberCommand)
                         {
                             commandMenu.Execute(this);
                             
