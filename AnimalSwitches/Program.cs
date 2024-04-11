@@ -27,38 +27,4 @@
 
         }
     }
-
-    public interface IAnimal
-    {
-        string GetRoar();
-    }
-
-    internal abstract class Animal : IAnimal
-    {
-        public abstract string GetRoar();
-    }
-
-    internal class Cat : Animal
-    {
-        public override string GetRoar()
-        {
-            return "Meow";
-        }
-    }
-
-    internal class Dog : Animal
-    {
-        public override string GetRoar()
-        {
-            return "Bark";
-        }
-    }
-
-    internal class UnknownAnimal : Animal
-    {
-        public override string GetRoar()
-        {
-            return "Unknown";
-        }
-    }
 }
