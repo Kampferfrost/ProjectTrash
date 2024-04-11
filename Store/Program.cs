@@ -13,10 +13,6 @@ namespace Store
         {
             Store store1 = new Store("Шестерочка");
             bool isOpen = true;
-            
-
-            store1.Work(isOpen);
-
 
             List<ProductStore> productsStore = new List<ProductStore>()
             {
@@ -30,6 +26,11 @@ namespace Store
             {
                 store1.AddProduct(productStore);
             }
+
+            store1.Work(isOpen);
+
+
+            
 
            
 

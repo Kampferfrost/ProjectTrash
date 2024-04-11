@@ -34,17 +34,13 @@ namespace Store
         public void Work(bool isOpen)
         {
             IsOpen = isOpen;
+
             int setNumberCommand;
             ViewerMenu viewerMenu = new ViewerMenu(StoreName);
-
-
-
-
-
-
             while (IsOpen)
             {
                 viewerMenu.ShowMenu();
+
                 if (int.TryParse(Console.ReadLine(), out setNumberCommand))
                 {
                     foreach (var commandMenu in _commandMenus)
@@ -52,10 +48,13 @@ namespace Store
                         if (commandMenu.IdCommand == setNumberCommand)
                         {
                             commandMenu.Execute(this);
+                            
                             break;
+
                         }
                     }
                 }
+
                 
                 Console.ReadKey();
                 Console.Clear();
