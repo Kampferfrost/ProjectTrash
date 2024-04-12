@@ -39,11 +39,13 @@ namespace Store
             }
 
         }
+
+        public ViewerMenu viewerMenu;
         public void Work(bool isOpen)
         {
             IsOpen = isOpen;
             
-            ViewerMenu viewerMenu = new ViewerMenu(StoreName);
+            viewerMenu = new ViewerMenu(this);
             while (IsOpen)
             {
                 viewerMenu.ShowMainMenu(numberCommand);
@@ -55,9 +57,7 @@ namespace Store
                         if (commandMenu.IdCommand == NumberCommand)
                         {
                             commandMenu.Execute(this);
-                            
                             break;
-
                         }
                     }
                 }

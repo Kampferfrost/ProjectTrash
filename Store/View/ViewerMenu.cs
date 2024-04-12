@@ -2,9 +2,11 @@
 {
     internal class ViewerMenu
     {
-        public ViewerMenu(string storeName) 
+        private Store _store;
+        public ViewerMenu(Store store) 
         {
-            StoreName = storeName;
+            StoreName = store.StoreName;
+            _store = store;
         }
         public string StoreName { get; init; }
         private List<string> _textMainMenu = new List<string>()
@@ -24,7 +26,7 @@
             Console.WriteLine($"Магазин {StoreName}");
             Console.WriteLine("Выбирите действие:");
             int numbering = 1;
-            if (numberCommand == 1) 
+            if (numberCommand == 0 || numberCommand == 1) 
             {
                 foreach (string text in _textMainMenu)
                 {
@@ -38,9 +40,14 @@
                     Console.WriteLine($"{numbering++}. {text}");
                 }
             }
-            
-            
-
+        }
+        
+        public void ShowProductStore()
+        {
+            foreach (var productStore in _store.GetListProductsStore())
+            {
+                Console.WriteLine(productStore.Name);
+            }
         }
     }
 }

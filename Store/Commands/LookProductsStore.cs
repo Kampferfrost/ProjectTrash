@@ -1,4 +1,6 @@
-﻿namespace Store.Commands
+﻿using Store.View;
+
+namespace Store.Commands
 {
     internal class LookProductsStore : CommandMenu
     {
@@ -6,10 +8,7 @@
 
         public override void Execute(Store store)
         {
-            foreach (var productStore in store.GetListProductsStore())
-            {
-                Console.WriteLine(productStore.Name);
-            }
+            store.viewerMenu.ShowProductStore();
             
         }
     }
