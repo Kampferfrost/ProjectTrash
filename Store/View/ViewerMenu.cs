@@ -44,9 +44,32 @@
         
         public void ShowProductStore()
         {
+            Console.WriteLine("\nСписок товаров:");
             foreach (var productStore in _store.GetListProductsStore())
             {
                 Console.WriteLine(productStore.Name);
+            }
+
+            int numbering = 1;
+            foreach (string text in _textStoreMenu)
+            {
+                Console.WriteLine($"{numbering++}. {text}");
+            }
+        }
+
+        public void ShowItemPlayer()
+        {
+            Console.WriteLine("\nСписок предметов в вашей сумке");
+
+            foreach (var productStore in _store.GetListProductsStore())
+            {
+                Console.WriteLine(productStore.Name);
+            }
+
+            int numbering = 1;
+            foreach (string text in _textStoreMenu)
+            {
+                Console.WriteLine($"{numbering++}. {text}");
             }
         }
     }

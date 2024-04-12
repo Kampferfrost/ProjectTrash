@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Store.Commands
 {
     internal class LookPlayerItems : CommandMenu
@@ -12,7 +7,7 @@ namespace Store.Commands
 
         public override void Execute(Store store)
         {
-
+            store.viewerMenu.ShowItemPlayer();
         }
     }
 }
