@@ -37,7 +37,6 @@ namespace Store
             {
                 return numberCommand;
             }
-
         }
 
         public ViewerMenu viewerMenu;
@@ -48,10 +47,14 @@ namespace Store
             viewerMenu = new ViewerMenu(this);
             while (IsOpen)
             {
-                viewerMenu.ShowMainMenu(numberCommand);
+                Console.Clear();
+                viewerMenu.ShowTitle();
+                viewerMenu.ShowCommandMenu();
+
 
                 if (int.TryParse(Console.ReadLine(), out numberCommand))
                 {
+
                     foreach (var commandMenu in _commandMenus)
                     {
                         if (commandMenu.IdCommand == NumberCommand)
@@ -61,10 +64,13 @@ namespace Store
                         }
                     }
                 }
+                else
+                {
+                }
+
 
                 
-                Console.ReadKey();
-                Console.Clear();
+
             }
         }
 

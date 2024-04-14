@@ -20,20 +20,32 @@
             "Купить товар",
             "Выйти из списка товаров"
         };
-
-        public void ShowMainMenu(int numberCommand)
+        
+        public void ShowTitle()
         {
             Console.WriteLine($"Магазин {StoreName}");
-            Console.WriteLine("Выбирите действие:");
+            Console.WriteLine("Выбирите действие:\n");
+        }
+
+        public void ShowCommandMenu()
+        {
+            
             int numbering = 1;
-            if (numberCommand == 0 || numberCommand == 1) 
+            if (_store.NumberCommand == 0) 
             {
                 foreach (string text in _textMainMenu)
                 {
                     Console.WriteLine($"{numbering++}. {text}");
                 }
+                
             }
-            if (numberCommand == 2)
+            if ( numbering == 1 )
+            {
+                {
+                    ShowProductStore();
+                }
+            }
+            if (_store.NumberCommand == 2)
             {
                 foreach (string text in _textStoreMenu)
                 {
@@ -44,12 +56,12 @@
         
         public void ShowProductStore()
         {
-            Console.WriteLine("\nСписок товаров:");
+            Console.WriteLine("\nСписок товаров:\n");
             foreach (var productStore in _store.GetListProductsStore())
             {
                 Console.WriteLine(productStore.Name);
             }
-
+            Console.WriteLine();
             int numbering = 1;
             foreach (string text in _textStoreMenu)
             {
