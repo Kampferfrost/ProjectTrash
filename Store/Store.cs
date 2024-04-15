@@ -30,12 +30,23 @@ namespace Store
         };
 
         #region WorkStore
-        private int numberCommand = 0;
+        private int mainCommand = 0;
+        private bool _setMainCommand()
+        {
+            return int.TryParse(Console.ReadLine(), out mainCommand);
+        }
+        private int storeCommand = 0;
+
+        private bool _setStoreCommand()
+        {
+            return int.TryParse(Console.ReadLine(), out storeCommand);
+        }
+
         public int NumberCommand 
         {
             get
             {
-                return numberCommand;
+                return mainCommand;
             }
         }
 
@@ -51,30 +62,36 @@ namespace Store
                 viewerMenu.ShowTitle();
                 viewerMenu.ShowCommandMenu();
 
-
-                if (int.TryParse(Console.ReadLine(), out numberCommand))
+                mainCommand = 0;
+                if (_setMainCommand())
                 {
-
-                    foreach (var commandMenu in _commandMenus)
+                    ICommandMenu commandMenu;
+                    foreach (var command in _commandMenus)
                     {
-                        if (commandMenu.IdCommand == NumberCommand)
+                        if (command.IdCommand == NumberCommand)
                         {
-                            commandMenu.Execute(this);
+                            commandMenu = command;
+                            command.Execute(this);
+                            while (storeCommand != 3)
+                            {
+                                if (_setStoreCommand())
+                                {
+
+                                }
+                            }
+                            storeCommand = 0;
                             break;
                         }
                     }
+                    
                 }
-                else
-                {
-                }
-
-
-                
 
             }
         }
 
         #endregion
+
+        
 
         public Store(string storename)
         {
