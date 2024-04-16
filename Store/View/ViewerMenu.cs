@@ -31,7 +31,7 @@
         {
             
             int numbering = 1;
-            if (_store.NumberCommand == 0) 
+            if (_store.MainCommand == 0) 
             {
                 foreach (string text in _textMainMenu)
                 {
@@ -39,13 +39,13 @@
                 }
                 
             }
-            if ( numbering == 1 )
+            if (_store.MainCommand == 1 )
             {
                 {
                     ShowProductStore();
                 }
             }
-            if (_store.NumberCommand == 2)
+            if (_store.MainCommand == 2)
             {
                 foreach (string text in _textStoreMenu)
                 {

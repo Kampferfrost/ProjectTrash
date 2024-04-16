@@ -31,23 +31,30 @@ namespace Store
 
         #region WorkStore
         private int mainCommand = 0;
-        private bool _setMainCommand()
-        {
-            return int.TryParse(Console.ReadLine(), out mainCommand);
-        }
-        private int storeCommand = 0;
-
-        private bool _setStoreCommand()
-        {
-            return int.TryParse(Console.ReadLine(), out storeCommand);
-        }
-
-        public int NumberCommand 
+        public int MainCommand
         {
             get
             {
                 return mainCommand;
             }
+        }
+        private bool _setMainCommand()
+        {
+            return int.TryParse(Console.ReadLine(), out mainCommand);
+        }
+
+        private int storeCommand = 0;
+        public int StoreCommand
+        {
+            get
+            {
+                return storeCommand;
+            }
+        }
+
+        private bool _setStoreCommand()
+        {
+            return int.TryParse(Console.ReadLine(), out storeCommand);
         }
 
         public ViewerMenu viewerMenu;
@@ -68,7 +75,7 @@ namespace Store
                     ICommandMenu commandMenu;
                     foreach (var command in _commandMenus)
                     {
-                        if (command.IdCommand == NumberCommand)
+                        if (command.IdCommand == MainCommand)
                         {
                             commandMenu = command;
                             command.Execute(this);
