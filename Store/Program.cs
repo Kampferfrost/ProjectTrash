@@ -27,12 +27,25 @@ namespace Store
                 store1.AddProduct(productStore);
             }
 
+            List<ItemPlayer> itemPlayers = new List<ItemPlayer>()
+            {
+                new ItemPlayer() { Name = "Носки" },
+                new ItemPlayer() {Name = "Мыло"},
+                new ItemPlayer() {Name = "Яблоко"}
+            };
+            foreach (var item in itemPlayers)
+            {
+                store1.AddItemPlayer(item);
+            }
+
+
+
             store1.Work(isOpen);
 
 
-            
 
-           
+
+
 
         }
     }

@@ -73,16 +73,13 @@
         {
             Console.WriteLine("\nСписок предметов в вашей сумке");
 
-            foreach (var productStore in _store.GetListProductsStore())
+            foreach (var itemPlayer in _store.GetListItemPlayer())
             {
-                Console.WriteLine(productStore.Name);
+                Console.WriteLine(itemPlayer.Name);
             }
 
             int numbering = 1;
-            foreach (string text in _textStoreMenu)
-            {
-                Console.WriteLine($"{numbering++}. {text}");
-            }
+
         }
     }
 }

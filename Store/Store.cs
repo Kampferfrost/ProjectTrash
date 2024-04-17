@@ -7,7 +7,7 @@ namespace Store
     internal class Store
     {
         private List<ProductStore> _productsStore = new List<ProductStore>();
-
+        private List<ItemPlayer> _ItemPlayer = new List<ItemPlayer>();  
 
         #region IsRunning
         public bool IsOpen { get; private set; } = false;
@@ -54,6 +54,7 @@ namespace Store
 
         private bool _setStoreCommand()
         {
+            mainCommand = 0;
             return int.TryParse(Console.ReadLine(), out storeCommand);
         }
 
@@ -69,7 +70,6 @@ namespace Store
                 viewerMenu.ShowTitle();
                 viewerMenu.ShowCommandMenu();
 
-                mainCommand = 0;
                 if (_setMainCommand())
                 {
                     ICommandMenu commandMenu;
@@ -79,7 +79,7 @@ namespace Store
                         {
                             commandMenu = command;
                             command.Execute(this);
-                            while (storeCommand != 3)
+                            while (storeCommand != 2)
                             {
                                 if (_setStoreCommand())
                                 {
@@ -113,6 +113,10 @@ namespace Store
         #endregion
 
         #region ProductsStore
+        /// <summary>
+        /// Добавляет начальный список продуктов магазина
+        /// </summary>
+        /// <param name="productStore"></param>
         public void AddProduct(ProductStore productStore)
         {
             foreach (var product in _productsStore)
@@ -125,10 +129,33 @@ namespace Store
             _productsStore.Add(productStore);
         }
 
+        /// <summary>
+        /// Добавляет начальный список предметов игрока
+        /// </summary>
+        /// <param name="itemPlayer"></param>
+        public void AddItemPlayer(ItemPlayer itemPlayer)
+        {
+            foreach (var item in _ItemPlayer)
+            {
+                if (itemPlayer.Name == item.Name)
+                {
+                    return;
+                }
+            }
+            _ItemPlayer.Add(itemPlayer);
+        }
+
         public List<ProductStore> GetListProductsStore()
         {
             return _productsStore;
         }
+
+        public List<ItemPlayer> GetListItemPlayer()
+        {
+            return _ItemPlayer;
+        }
+
+
 
         /// <summary>
         /// Поиск предмета по имени в List
