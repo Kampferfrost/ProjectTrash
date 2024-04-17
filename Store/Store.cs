@@ -7,7 +7,7 @@ namespace Store
     internal class Store
     {
         private List<ProductStore> _productsStore = new List<ProductStore>();
-        private List<ItemPlayer> _ItemPlayer = new List<ItemPlayer>();  
+        private List<ItemPlayer> _ItemPlayer = new List<ItemPlayer>();
 
         #region IsRunning
         public bool IsOpen { get; private set; } = false;
@@ -62,7 +62,7 @@ namespace Store
         public void Work(bool isOpen)
         {
             IsOpen = isOpen;
-            
+
             viewerMenu = new ViewerMenu(this);
             while (IsOpen)
             {
@@ -81,8 +81,20 @@ namespace Store
                             command.Execute(this);
                             while (storeCommand != 2)
                             {
-                                if (_setStoreCommand())
+                                _setStoreCommand();
+                                if (storeCommand == 1)
                                 {
+                                    string? nameProduct = string.Empty;
+                                    viewerMenu.ShowTextStorePay();
+                                    foreach (var product in _productsStore)
+                                    {
+                                        if (product.Name.ToLower() == (nameProduct = Console.ReadLine().ToLower()))
+                                        {
+                                            _ItemPlayer.Add(new ItemPlayer() { Name = product.Name});
+                                            Console.WriteLine("Покупка");
+                                            break;
+                                        }
+                                    }
 
                                 }
                             }
@@ -90,7 +102,7 @@ namespace Store
                             break;
                         }
                     }
-                    
+
                 }
 
             }
@@ -98,7 +110,7 @@ namespace Store
 
         #endregion
 
-        
+
 
         public Store(string storename)
         {

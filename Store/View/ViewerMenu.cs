@@ -20,7 +20,20 @@
             "Купить товар",
             "Выйти из списка товаров"
         };
+
+        private List<string> _textStorePay = new List<string>()
+        {
+            "Наберите зазвание продукта, чтобы купить его"
+        };
         
+        public void ShowTextStorePay()
+        {
+            foreach (var item in _textStorePay)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
         public void ShowTitle()
         {
             Console.WriteLine($"Магазин {StoreName}");
@@ -81,5 +94,7 @@
             int numbering = 1;
 
         }
+
+        
     }
 }
