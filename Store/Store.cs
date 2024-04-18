@@ -92,6 +92,7 @@ namespace Store
                                         if (product.Name.ToLower() == nameProduct)
                                         {
                                             _ItemPlayer.Add(new ItemPlayer() { Name = product.Name });
+                                            _productsStore.Remove(product);
                                             Console.WriteLine($"Вы приобрели предмет {product.Name}");
                                             storeCommand = 2;
                                             Console.ReadKey();
