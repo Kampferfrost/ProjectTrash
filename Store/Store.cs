@@ -84,33 +84,31 @@ namespace Store
                                 _setStoreCommand();
                                 if (storeCommand == 1)
                                 {
-                                    string? nameProduct = string.Empty;
                                     viewerMenu.ShowTextStorePay();
+                                    string? nameProduct = string.Empty;
+                                    nameProduct = Console.ReadLine().ToLower();
                                     foreach (var product in _productsStore)
                                     {
-                                        if (product.Name.ToLower() == (nameProduct = Console.ReadLine().ToLower()))
+                                        if (product.Name.ToLower() == nameProduct)
                                         {
-                                            _ItemPlayer.Add(new ItemPlayer() { Name = product.Name});
-                                            Console.WriteLine("Покупка");
+                                            _ItemPlayer.Add(new ItemPlayer() { Name = product.Name });
+                                            Console.WriteLine($"Вы приобрели предмет {product.Name}");
+                                            storeCommand = 2;
+                                            Console.ReadKey();
                                             break;
                                         }
                                     }
-
                                 }
                             }
                             storeCommand = 0;
                             break;
                         }
                     }
-
                 }
-
             }
         }
 
         #endregion
-
-
 
         public Store(string storename)
         {
@@ -166,8 +164,6 @@ namespace Store
         {
             return _ItemPlayer;
         }
-
-
 
         /// <summary>
         /// Поиск предмета по имени в List
