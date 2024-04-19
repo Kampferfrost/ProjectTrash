@@ -143,7 +143,7 @@ namespace DataPlayers
         //возврат игроков по рейтингу от и до
 
         // 1 задание бан
-        public string SetPlayerStatusBan(string name)
+        public string SetPlayerStatusBan(string name, int hour)
         {
             Player player = GetPlayer(name);
             string banStatus = "Неопределен";
@@ -151,7 +151,8 @@ namespace DataPlayers
             {
                 player.Ban = true;
                 player.BannedTime = DateTime.Now;
-                banStatus = $"Игрок {player.Name} Забанен";
+                player.EndBanTime = player.BannedTime.AddHours(hour);
+                banStatus = $"Игрок {player.Name} Забанен на: {player.EndBanTime.Subtract(player.BannedTime)}";
             }
             else
             {
@@ -159,7 +160,7 @@ namespace DataPlayers
             }
             return banStatus;
         }
-        // 1 задание разбан (можно было это объяденить в один метод)
+        
         public string SetPlayerStatusUnbanned(string name)
         {
             Player player = GetPlayer(name);
@@ -167,6 +168,7 @@ namespace DataPlayers
             if (player.Ban == true)
             {
                 player.Ban = false;
+                player.EndBanTime = DateTime.Now;
                 banStatus = $"Игрок {player.Name} Разбанен";
             }
             else
@@ -201,8 +203,8 @@ namespace DataPlayers
         #endregion
 
         //Todo: 1) Бан/разбана игрока на сервере по имени игрока #готово
-        //Todo: 2) Дата бана игрока, дата разбана игрока
-        //Todo: 3) Дата бана с, дата бана по
+        //Todo: 2) Дата бана игрока, дата разбана игрока #готово
+        //Todo: 3) Дата бана с, дата бана по #готово
         //Todo: 4) Команды арены (игроки, рейтинг, лимит 2 игрока в команде, название)
         //Todo: 5) Завести пару команд с игроками
         //Todo: 6) Online server, максимальная онлайн сервера

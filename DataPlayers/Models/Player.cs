@@ -12,9 +12,9 @@
         public DateTime EndBanTime { get; set; }
 
 
-        public static void ShowRoar()
+        public static string ShowRoar()
         {
-            Console.WriteLine("Я пидор");
+            return "Я пидор";
         }
 
     }
