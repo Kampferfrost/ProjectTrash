@@ -202,6 +202,29 @@ namespace DataPlayers
 
         #endregion
 
+        #region TeamArena
+
+        private List<TeamArena> _teamArenas = new List<TeamArena>();
+
+        public void AddTeamArena(TeamArena teamArena)
+        {
+            foreach (var team in _teamArenas)
+            {
+                if(team.Name == teamArena.Name)
+                {
+                    return;
+                }
+                _teamArenas.Add(teamArena);
+            }
+        }
+
+        public List<TeamArena> GetListTeamArenas()
+        {
+            return _teamArenas;
+        }
+
+        #endregion
+
         //Todo: 1) Бан/разбана игрока на сервере по имени игрока #готово
         //Todo: 2) Дата бана игрока, дата разбана игрока #готово
         //Todo: 3) Дата бана с, дата бана по #готово
