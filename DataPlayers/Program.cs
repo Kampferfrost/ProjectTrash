@@ -4,8 +4,6 @@ using DataPlayers.Services;
 namespace DataPlayers
 {
 
-
-
     internal class Program
     {
         static private ServerPlatform platform;
@@ -45,14 +43,17 @@ namespace DataPlayers
                 server1.AddPlayer(player);
             }
 
+            #region Arena
             Console.WriteLine("########Arena############");
-            server1.AddTeamArena(new TeamArena() { Name = "Плачь и смотри" }); //не работает
+            server1.AddTeamArena(new TeamArena() { Name = "Плачь и смотри" }); 
+            Console.WriteLine("\n Список Команд:\n");
             List<TeamArena> testArena = server1.GetListTeamArenas();
             foreach (var team in testArena)
             {
                 Console.WriteLine(team.Name);
             }
-            Console.WriteLine("########EndArena############");
+            Console.WriteLine("\n########EndArena############");
+            #endregion
 
             Console.WriteLine(server1.SetPlayerStatusBan("Корова", 1));
             Console.WriteLine(server1.SetPlayerStatusUnbanned("Пидор"));

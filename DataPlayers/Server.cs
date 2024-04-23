@@ -214,8 +214,9 @@ namespace DataPlayers
                 {
                     return;
                 }
-                _teamArenas.Add(teamArena);
+               
             }
+            _teamArenas.Add(teamArena);
         }
 
         public List<TeamArena> GetListTeamArenas()
