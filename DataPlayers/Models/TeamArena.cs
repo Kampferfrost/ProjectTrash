@@ -11,7 +11,7 @@
         public Player FirstPlayer { get; set; } //А надо ли?
         public Player SecondPlayer { get; set; } //А надо ли?
 
-        //лимит 2 игрока в команде, странно ну ладно
+        
     }
 
 }

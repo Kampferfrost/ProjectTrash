@@ -10,7 +10,7 @@
         public decimal Dps { get; set; }
         public DateTime BannedTime { get; set; }
         public DateTime EndBanTime { get; set; }
-        public string ArenaNameTwoVsTwo { get; set; }
+        public int IdArenaTwoVSTwo { get; set; }
 
 
         public static string ShowRoar()
