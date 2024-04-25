@@ -8,8 +8,8 @@
         public int CountPlayers { get; set; }
         public int Win { get; set; }
         public int Loss {  get; set; }
-        public Player FirstPlayer { get; set; } //А надо ли?
-        public Player SecondPlayer { get; set; } //А надо ли?
+        public int IdFirstPlayer { get; set; } 
+        public int IdSecondPlayer { get; set; } 
 
         
     }

@@ -2,7 +2,7 @@
 {
     internal class Player
     {
-        public int SerialNumber { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Level { get; set; }
         public bool Ban { get; set; }

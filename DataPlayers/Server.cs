@@ -145,7 +145,7 @@ namespace DataPlayers
         // 1 задание бан
         public string SetPlayerStatusBan(string name, int hour)
         {
-            Player player = GetPlayer(name);
+            Player player = GetPlayerByName(name);
             string banStatus = "Неопределен";
             if (player.Ban == false)
             {
@@ -163,7 +163,7 @@ namespace DataPlayers
         
         public string SetPlayerStatusUnbanned(string name)
         {
-            Player player = GetPlayer(name);
+            Player player = GetPlayerByName(name);
             string banStatus = "Неопределен";
             if (player.Ban == true)
             {
@@ -186,7 +186,7 @@ namespace DataPlayers
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Player GetPlayer(string name)
+        public Player GetPlayerByName(string name)
         {
             Player playerSourse = _players[0];
             foreach (var player in _players)
@@ -206,17 +206,23 @@ namespace DataPlayers
 
         private List<TeamArena> _teamArenas = new List<TeamArena>();
 
-        public void AddTeamArena(TeamArena teamArena)
+        public void CreatTeamArena(TeamArena teamArena, string namePlayer)
         {
+            Player playerCreaterArena = GetPlayerByName(namePlayer);
             foreach (var team in _teamArenas)
             {
-                if(team.Name == teamArena.Name)
+                if(team.Name == teamArena.Name && team.IdFirstPlayer == playerCreaterArena.Id)
                 {
                     return;
                 }
                
             }
+
             _teamArenas.Add(teamArena);
+            teamArena.Id = _teamArenas.Count;
+            teamArena.IdFirstPlayer = playerCreaterArena.Id;
+            playerCreaterArena.IdArenaTwoVSTwo = teamArena.Id; 
+
         }
 
         public List<TeamArena> GetListTeamArenas()

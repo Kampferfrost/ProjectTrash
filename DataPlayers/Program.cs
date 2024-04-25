@@ -23,41 +23,55 @@ namespace DataPlayers
             platform = new ServerPlatform(servers, "Warcraft.by");
 
             Console.WriteLine("Список игроков из Main List\n");
+
+            #region ListPlayers
             List<Player> _players = new List<Player>()
             {
-                new Player() {SerialNumber = 1, Name = "Хлеб", Level = 60, Ban = false, Rating = 120, Dps = 60, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue },
-                new Player() {SerialNumber = 2, Name = "Хикита", Level = 60, Ban = false,Rating = 700, Dps = 1000, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue },
-                new Player() {SerialNumber = 3, Name = "Слэм", Level = 60, Ban = false ,Rating = 2350, Dps = 18567, BannedTime = new DateTime(2021, 03, 03), EndBanTime = new DateTime(2021, 03, 10), IdArenaTwoVSTwo = 2},
-                new Player() {SerialNumber = 3, Name = "Гэля", Level = 60, Ban = false, Rating = 1900, Dps = 70, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue, IdArenaTwoVSTwo = 1},
-                new Player() {SerialNumber = 3, Name = "Ира", Level = 60, Ban = true,Rating = 0, Dps = 10, BannedTime = new DateTime(2023, 08, 25), EndBanTime = DateTime.MinValue},
-                new Player() {SerialNumber = 3, Name = "Корова", Level = 60, Ban = false, Rating = 500, Dps = 480, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue},
-                new Player() {SerialNumber = 3, Name = "Пидор", Level = 60, Ban = true, Rating = 2700, Dps = 5000, BannedTime = new DateTime(2024, 04, 17), EndBanTime = new DateTime(2024, 06, 17)},
-                new Player() {SerialNumber = 3, Name = "ГрибоСлэм", Level = 60, Ban = false, Rating = 2801, Dps = 5000,BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue, IdArenaTwoVSTwo = 1},
-
+                new Player() {Id = 1, Name = "Хлеб", Level = 60, Ban = false, Rating = 120, Dps = 60, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue },
+                new Player() {Id = 2, Name = "Хикита", Level = 60, Ban = false,Rating = 700, Dps = 1000, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue },
+                new Player() {Id = 3, Name = "Слэм", Level = 60, Ban = false ,Rating = 2350, Dps = 18567, BannedTime = new DateTime(2021, 03, 03), EndBanTime = new DateTime(2021, 03, 10), IdArenaTwoVSTwo = 2},
+                new Player() {Id = 4, Name = "Гэля", Level = 60, Ban = false, Rating = 1900, Dps = 70, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue, IdArenaTwoVSTwo = 1},
+                new Player() {Id = 5, Name = "Ира", Level = 60, Ban = true,Rating = 0, Dps = 10, BannedTime = new DateTime(2023, 08, 25), EndBanTime = DateTime.MinValue},
+                new Player() {Id = 6, Name = "Корова", Level = 60, Ban = false, Rating = 500, Dps = 480, BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue},
+                new Player() {Id = 7, Name = "Пидор", Level = 60, Ban = true, Rating = 2700, Dps = 5000, BannedTime = new DateTime(2024, 04, 17), EndBanTime = new DateTime(2024, 06, 17)},
+                new Player() {Id = 8, Name = "ГрибоСлэм", Level = 60, Ban = false, Rating = 2801, Dps = 5000,BannedTime = DateTime.MinValue, EndBanTime = DateTime.MinValue, IdArenaTwoVSTwo = 1},
             };
-
-            
 
             foreach (var player in _players)
             {
                 server1.AddPlayer(player);
             }
 
+            #endregion
+
+
+
             #region Arena
+
+            server1.CreatTeamArena(new TeamArena() { Name = "Кофе Жокей смотри на жизнь веселей"}, "Хикита");
+            server1.CreatTeamArena(new TeamArena() { Name = "Плачь и смотри"}, "ГрибоСлэм");
+
             Console.WriteLine("########Arena############");
-            server1.AddTeamArena(new TeamArena() { Name = "Плачь и смотри" }); 
+
+           
+
             Console.WriteLine("\n Список Команд:\n");
+
             List<TeamArena> testArena = server1.GetListTeamArenas();
             foreach (var team in testArena)
             {
                 Console.WriteLine(team.Name);
+                Console.WriteLine("Ид команды " + team.Id);
+                Console.WriteLine("Ид игрока создателя " + team.IdFirstPlayer);
+                Console.WriteLine();
             }
             Console.WriteLine("\n########EndArena############");
+
             #endregion
 
             Console.WriteLine(server1.SetPlayerStatusBan("Корова", 1));
             Console.WriteLine(server1.SetPlayerStatusUnbanned("Пидор"));
-            
+
 
             Console.WriteLine($"\nСервер: {server1.Name} Игроки:");
             foreach (var playerName in server1.GetPlayerNames())
@@ -68,7 +82,7 @@ namespace DataPlayers
             foreach (var player in server1.GetBannedPlayers())
             {
                 string dateBanned = "";
-                if(player.BannedTime == DateTime.MinValue)
+                if (player.BannedTime == DateTime.MinValue)
                 {
                     dateBanned = "Нет даты";
                 }
