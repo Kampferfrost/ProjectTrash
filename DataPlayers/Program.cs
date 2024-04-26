@@ -61,8 +61,8 @@ namespace DataPlayers
             foreach (var team in testArena)
             {
                 Console.WriteLine(team.Name);
-                Console.WriteLine("Ид команды " + team.Id);
-                Console.WriteLine("Ид игрока создателя " + team.IdFirstPlayer);
+                Console.WriteLine("Ид команды: " + team.Id);
+                Console.WriteLine("Имя создателя команды арены: " + server1.GetPlayerById(team.IdFirstPlayer).Name);
                 Console.WriteLine();
             }
             Console.WriteLine("\n########EndArena############");

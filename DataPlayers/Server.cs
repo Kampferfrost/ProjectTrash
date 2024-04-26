@@ -194,9 +194,23 @@ namespace DataPlayers
                 if (player.Name == name)
                 {
                     playerSourse = player;
+                    break;
                 }
             }
+            return playerSourse;
+        }
 
+        public Player GetPlayerById(int id)
+        {
+            Player playerSourse = _players[0];
+            foreach (var player in _players)
+            {
+                if (player.Id == id)
+                {
+                    playerSourse = player;
+                    break;
+                }
+            }
             return playerSourse;
         }
 
