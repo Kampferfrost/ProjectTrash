@@ -244,6 +244,11 @@ namespace DataPlayers
             return _teamArenas;
         }
 
+        public void ShowAllArenaTeams()
+        {
+
+        }
+
         #endregion
 
         //Todo: 1) Бан/разбана игрока на сервере по имени игрока #готово
