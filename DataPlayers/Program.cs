@@ -57,8 +57,6 @@ namespace DataPlayers
 
             Console.WriteLine("\n Список Команд:\n");
 
-            //нужно сделать это отдельным методом ShowAllArenaTeams в server(метод который выдаст все арены)
-            //List это ссылочны тим да?
             List<TeamArena> testArena = server1.GetListTeamArenas();
             foreach (var team in testArena)
             {

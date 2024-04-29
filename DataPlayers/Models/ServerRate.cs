@@ -25,6 +25,11 @@
         /// </summary>
         public int StartLevel { get; set; }
 
+        /// <summary>
+        /// Макскимальное количество игроков которые были онлайн
+        /// </summary>
+        public int MaxPlayersOnlineOneServer { get; set; }
+
 
     }
 }
