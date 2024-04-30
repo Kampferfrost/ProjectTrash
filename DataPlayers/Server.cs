@@ -244,12 +244,14 @@ namespace DataPlayers
             return _teamArenas;
         }
 
-        public void ShowAllArenaTeams()
-        {
-
-        }
-
         #endregion
+
+        public int MaxPlayerOnline { get; private set; }
+
+        
+
+        // а как сделать людей онлайн?
+        // создать лист онлайн игроков 
 
         //Todo: 1) Бан/разбана игрока на сервере по имени игрока #готово
         //Todo: 2) Дата бана игрока, дата разбана игрока #готово

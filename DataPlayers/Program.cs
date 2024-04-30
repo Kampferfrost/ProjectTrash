@@ -10,7 +10,7 @@ namespace DataPlayers
 
         static void Main(string[] args)
         {
-            ServerRate serverRate1 = new ServerRate() { ExpRate = 1, GoldRate = 1, HonorRate = 1, StartLevel = 1 };
+            ServerRate serverRate1 = new ServerRate() { ExpRate = 1, GoldRate = 1, HonorRate = 1, StartLevel = 1};
             Server server1 = new Server(serverRate1, "WotLK x1");
 
             ServerRate serverRate100 = new ServerRate() { ExpRate = 100, GoldRate = 100, HonorRate = 100, StartLevel = 1 };
