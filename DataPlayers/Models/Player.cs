@@ -11,6 +11,7 @@
         public DateTime BannedTime { get; set; }
         public DateTime EndBanTime { get; set; }
         public int IdArenaTwoVSTwo { get; set; }
+        public bool IsPlayerOnline { get; set; }
 
 
         public static string ShowRoar()

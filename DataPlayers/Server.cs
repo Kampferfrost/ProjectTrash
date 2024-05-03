@@ -214,6 +214,19 @@ namespace DataPlayers
             return playerSourse;
         }
 
+        public int GetCountPlayersOnlineOnServer()
+        {
+            int count = 0;
+            foreach (var player in _players)
+            {
+                if (player.IsPlayerOnline == true)
+                { 
+                    count =+ 1;
+                }
+            }
+            return count;
+        }
+
         #endregion
 
         #region TeamArena
@@ -246,7 +259,9 @@ namespace DataPlayers
 
         #endregion
 
+
         public int MaxPlayerOnline { get; private set; }
+        
 
         
 
