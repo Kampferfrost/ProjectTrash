@@ -11,17 +11,18 @@ namespace DataPlayers
         static void Main(string[] args)
         {
             ServerRate serverRate1 = new ServerRate() { ExpRate = 1, GoldRate = 1, HonorRate = 1, StartLevel = 1};
-            Server server1 = new Server(serverRate1, "WotLK x1", DateTime.Now);
+            Server server1 = new Server(serverRate1, "WotLK x1");
 
             ServerRate serverRate100 = new ServerRate() { ExpRate = 100, GoldRate = 100, HonorRate = 100, StartLevel = 1 };
-            Server server2 = new Server(serverRate100, "WotLK x100", DateTime.Now);
+            Server server2 = new Server(serverRate100, "WotLK x100");
 
             ServerRate serverRateFun = new ServerRate() { ExpRate = 1, GoldRate = 1, HonorRate = 1, StartLevel = 80 };
-            Server server3 = new Server(serverRateFun, "WotLK FUN", DateTime.Now);
+            Server server3 = new Server(serverRateFun, "WotLK FUN");
 
             List<Server> servers = new List<Server>() { server1, server2, server3 };
             platform = new ServerPlatform(servers, "Warcraft.by");
-            server1.SetUptimeServer();
+
+            server1.RunServer(DateTime.Now);
 
             Console.WriteLine("Список игроков из Main List\n");
 
@@ -115,9 +116,13 @@ namespace DataPlayers
             Console.WriteLine(playerWithMaxDps.Name);
             Console.WriteLine(playerWithMaxDps.Dps);
 
+
+            server1.StopServer(DateTime.Now);
             #region upTime
 
             Console.WriteLine("Время Работы сервера: " + server1.UpTime);
+            Console.WriteLine("Время старта сервера: " + server1.StartServerTime);
+            Console.WriteLine("Время остановки сервера: " + server1.StopServerTime);
 
 
             #endregion

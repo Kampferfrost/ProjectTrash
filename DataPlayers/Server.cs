@@ -9,11 +9,11 @@ namespace DataPlayers
     {
         public ServerRate ServerRate { get; private set; }
 
-        public Server(ServerRate serverRate, string name, DateTime startServer)
+        public Server(ServerRate serverRate, string name)
         {
             ServerRate = serverRate;
             Name = name;
-            StartServer = startServer;
+
 
 
         }
@@ -21,15 +21,16 @@ namespace DataPlayers
         #region IsRunning
 
         public bool IsRunning { get; private set; } = false;
-
-        public void RunServer()
+        public void RunServer(DateTime runServerTime)
         {
             IsRunning = true;
+            StartServerTime = runServerTime;
         }
-
-        public void StopServer()
+        public void StopServer(DateTime stopServerTime)
         {
             IsRunning = false;
+            StopServerTime = stopServerTime;
+            SetUptimeServer();
         }
         #endregion
 
@@ -266,13 +267,13 @@ namespace DataPlayers
 
         #region Uptime Server
 
-        public DateTime StartServer { get; private set; }
+        public DateTime StopServerTime { get; private set; }
+        public DateTime StartServerTime { get; private set; }
         public TimeSpan UpTime { get; private set; }
 
         public void SetUptimeServer()
         {
-            DateTime now = DateTime.Now;
-            UpTime = now.Subtract(StartServer);
+            UpTime = StopServerTime.Subtract(StartServerTime);
         }
 
         #endregion
