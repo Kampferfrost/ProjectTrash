@@ -11,16 +11,17 @@ namespace DataPlayers
         static void Main(string[] args)
         {
             ServerRate serverRate1 = new ServerRate() { ExpRate = 1, GoldRate = 1, HonorRate = 1, StartLevel = 1};
-            Server server1 = new Server(serverRate1, "WotLK x1");
+            Server server1 = new Server(serverRate1, "WotLK x1", DateTime.Now);
 
             ServerRate serverRate100 = new ServerRate() { ExpRate = 100, GoldRate = 100, HonorRate = 100, StartLevel = 1 };
-            Server server2 = new Server(serverRate100, "WotLK x100");
+            Server server2 = new Server(serverRate100, "WotLK x100", DateTime.Now);
 
             ServerRate serverRateFun = new ServerRate() { ExpRate = 1, GoldRate = 1, HonorRate = 1, StartLevel = 80 };
-            Server server3 = new Server(serverRateFun, "WotLK FUN");
+            Server server3 = new Server(serverRateFun, "WotLK FUN", DateTime.Now);
 
             List<Server> servers = new List<Server>() { server1, server2, server3 };
             platform = new ServerPlatform(servers, "Warcraft.by");
+            server1.SetUptimeServer();
 
             Console.WriteLine("Список игроков из Main List\n");
 
@@ -114,9 +115,16 @@ namespace DataPlayers
             Console.WriteLine(playerWithMaxDps.Name);
             Console.WriteLine(playerWithMaxDps.Dps);
 
+            #region upTime
+
+            Console.WriteLine("Время Работы сервера: " + server1.UpTime);
+
+
+            #endregion
+
+
 
             //OldMethod(_players);
-
         }
 
         private static void OldMethod(List<Player> _players)
@@ -147,10 +155,7 @@ namespace DataPlayers
                     raitingList.Add(player);
                 }
             }
-            Console.WriteLine();
-            Console.WriteLine("Список игроков с рейтингом с 1500 до 1800");
-            Console.WriteLine();
-            Console.WriteLine("Список игроков сервера");
+            
         }
     }
 

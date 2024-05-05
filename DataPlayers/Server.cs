@@ -9,10 +9,13 @@ namespace DataPlayers
     {
         public ServerRate ServerRate { get; private set; }
 
-        public Server(ServerRate serverRate, string name)
+        public Server(ServerRate serverRate, string name, DateTime startServer)
         {
             ServerRate = serverRate;
             Name = name;
+            StartServer = startServer;
+
+
         }
 
         #region IsRunning
@@ -28,7 +31,6 @@ namespace DataPlayers
         {
             IsRunning = false;
         }
-
         #endregion
 
         #region ServerName
@@ -44,7 +46,6 @@ namespace DataPlayers
         {
             Name = string.Empty;
         }
-
 
         #endregion
 
@@ -263,8 +264,20 @@ namespace DataPlayers
 
         #endregion
 
+        #region Uptime Server
 
-        public int MaxPlayerOnline { get; private set; }
+        public DateTime StartServer { get; private set; }
+        public TimeSpan UpTime { get; private set; }
+
+        public void SetUptimeServer()
+        {
+            DateTime now = DateTime.Now;
+            UpTime = now.Subtract(StartServer);
+        }
+
+        #endregion
+
+
 
 
 
@@ -280,7 +293,7 @@ namespace DataPlayers
         //Todo: 4) Команды арены (игроки, рейтинг, лимит 2 игрока в команде, название) #готово
         //Todo: 5) Завести пару команд с игроками #готово
         //Todo: 6) Online server, максимальный онлайн сервера #готово
-        //Todo: 7) Uptime server 
+        //Todo: 7) Uptime server  #готово
         //Todo: 8) Дата падения/поднятия server
 
     }
