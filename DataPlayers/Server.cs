@@ -214,17 +214,21 @@ namespace DataPlayers
             return playerSourse;
         }
 
-        public int GetCountPlayersOnlineOnServer()
+        public int MaxPlayersOnLineOnServer { get; private set; } = 0;
+        public void GetCountPlayersOnlineOnServer()
         {
             int count = 0;
             foreach (var player in _players)
             {
                 if (player.IsPlayerOnline == true)
                 { 
-                    count =+ 1;
+                    count += 1;
                 }
             }
-            return count;
+            if (count > MaxPlayersOnLineOnServer)
+            {
+                MaxPlayersOnLineOnServer = count;
+            }
         }
 
         #endregion
@@ -261,9 +265,9 @@ namespace DataPlayers
 
 
         public int MaxPlayerOnline { get; private set; }
-        
 
-        
+
+
 
         // а как сделать людей онлайн?
         // создать лист онлайн игроков 
@@ -275,7 +279,7 @@ namespace DataPlayers
         //Todo: 3) Дата бана с, дата бана по #готово
         //Todo: 4) Команды арены (игроки, рейтинг, лимит 2 игрока в команде, название) #готово
         //Todo: 5) Завести пару команд с игроками #готово
-        //Todo: 6) Online server, максимальный онлайн сервера 
+        //Todo: 6) Online server, максимальный онлайн сервера #готово
         //Todo: 7) Uptime server 
         //Todo: 8) Дата падения/поднятия server
 

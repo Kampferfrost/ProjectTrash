@@ -43,8 +43,10 @@ namespace DataPlayers
             }
 
             Console.WriteLine();
+            server1.GetCountPlayersOnlineOnServer();
             Console.WriteLine("Максимальный онлайн пик сервера был:");
-            Console.WriteLine(server1.GetCountPlayersOnlineOnServer());
+            Console.WriteLine(server1.MaxPlayersOnLineOnServer);
+            Console.WriteLine();
 
             #endregion
 
