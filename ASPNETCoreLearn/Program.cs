@@ -6,10 +6,10 @@ namespace ASPNETCoreLearn
         {
             var builder = WebApplication.CreateBuilder(args);
             var app = builder.Build();
-
             app.MapGet("/", () => "Nep Nep");
-
+            app.UseWelcomePage();
             app.Run();
+
         }
     }
 }
