@@ -1,15 +1,37 @@
-﻿namespace PassengerTrain
+﻿using PassengerTrain.Models;
+
+namespace PassengerTrain
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Поезда крутили 3 хача");
+            Console.WriteLine("полная информация о текущем рейсе или его отсутствии");
 
+            Handler handler = new Handler();
+
+            List<City> cities = new List<City>()
+            { 
+                new City(){Name = "Москва"},
+                new City(){Name = "Боброво"},
+                new City(){Name = "Минск"},
+                new City(){Name = "Витебск"},
+                new City(){Name = "Архангельск"},
+                new City(){Name = "Клецк"},
+                new City(){Name = "Хабза"},
+
+            };
+
+            foreach (City city in cities)
+            {
+                handler.AddCity(city);
+            }
 
         }
     }
-}
 
+}
 
         //У вас есть программа, которая помогает пользователю составить план поезда.
         //Есть 4 основных шага в создании плана:
