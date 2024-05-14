@@ -1,21 +1,20 @@
 ﻿namespace TestCode
 {
-    
+
     internal class Program
     {
-        delegate string PersonTellTrue();
-        delegate void Message(); // 1. Объявляем делегат
+        delegate void MessageHandler(string message);
         static void Main(string[] args)
         {
+            MessageHandler handler = delegate (string mes)
+            {
+                Console.WriteLine(mes);
+            };
 
-            Person person = new Person();
+            handler("tigr");
 
-            Console.WriteLine(person.TellTrue());
-            PersonTellTrue Mess;
 
-            Mess = person.TellTrue;
 
-            Console.WriteLine(Mess());
         }
 
 
