@@ -1,4 +1,6 @@
-﻿namespace TestCode
+﻿using System.Threading.Channels;
+
+namespace TestCode
 {
 
     internal class Program
@@ -11,14 +13,17 @@
                 Console.WriteLine(mes);
             };
 
-            handler("tigr");
+            Task task = new Task(()) => Console.WriteLine();
+            task.Start();
+            //как это есть?
+
 
 
 
         }
 
 
-    }
+}
 
 
 }
