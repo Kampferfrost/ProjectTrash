@@ -5,25 +5,43 @@ namespace TestCode
 
     internal class Program
     {
-        delegate void MessageHandler(string message);
+        delegate void Message();
         static void Main(string[] args)
         {
-            MessageHandler handler = delegate (string mes)
+
+
+            Message mess = ShowText;
+
+
+
+            // Просто делегат
+            void ShowText()
             {
-                Console.WriteLine(mes);
+                Console.WriteLine("Просто делигат");
+            }
+
+            // Анонимный делегат
+            Message mess2 = delegate ()
+            {
+                Console.WriteLine("Анонимный метод");
             };
 
-            Task task = new Task(()) => Console.WriteLine();
-            task.Start();
-            //как это есть?
+            Message mess3 = () =>
+                {
+                    Console.WriteLine("Лямда");
+                };
 
 
-
+            mess();
+            mess2();
+            mess3();
 
         }
 
 
-}
+
+
+    }
 
 
 }
