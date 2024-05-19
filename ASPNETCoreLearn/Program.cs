@@ -1,3 +1,5 @@
+using System.Net.Security;
+
 namespace ASPNETCoreLearn
 {
     public class Program
@@ -8,9 +10,13 @@ namespace ASPNETCoreLearn
             var builder = WebApplication.CreateBuilder(args);
             var app = builder.Build();
 
-            app.Run(async (context) => await context.Response.WriteAsync("Hello METANIT.COM"));
+            app.Run(HandleRequst);
             app.Run();
 
+            async Task HandleRequst(HttpContext context)
+            {
+                await context.Response.WriteAsync("Hello Cirno");
+            }
             
 
         //это метод делает объект но,  чтобы вызвать нужно run. ран вшит в жопе интерфеса, интерфеса который создается из жопы билдера билдер при этом находится не в жопе а в очень легкой форме 
