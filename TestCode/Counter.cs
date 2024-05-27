@@ -4,7 +4,7 @@
     {
         public int Seconds { get; set; }
 
-        public static implicit operator Counter(int x)
+        public static implicit operator Counter(int x) //скрытый
         {
             return new Counter { Seconds = x };
         }
@@ -12,15 +12,7 @@
         public static explicit operator int(Counter counter) //явное
         {
             return counter.Seconds;
-        }
-
-        public static explicit operator string(Counter counter3)
-        {
-            return "You are pidor";
-        }
-
-        
-
+        }    
 
     }
 }

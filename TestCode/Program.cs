@@ -11,10 +11,10 @@ namespace TestCode
 
             int x = (int)counter1;
             Console.WriteLine(x);
+
+            Counter counter2 = x;
             
-            Counter counter2 = new Counter { Seconds = 23 };
-            
-            Console.WriteLine((string)counter2);
+            Console.WriteLine(counter2.Seconds);
 
         }
 
