@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace TestCode
 {
-    internal class Car : IMoviable
+    internal interface IPerson
     {
-        private string _name;
-
-        public string Name
+       string Print()
         {
-            get => _name; set => _name = value;
+            return "Человек";
         }
-
     }
 }
