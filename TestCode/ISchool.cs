@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TestCode
 {
-    internal interface IMessage
+    internal interface ISchool
     {
-        string Text { get; set; }
+        void Study();
     }
 }

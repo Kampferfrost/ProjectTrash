@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace TestCode
 {
-    internal class Doll : IPerson
+    internal interface IAction
     {
-        public string Print()
-        {
-            return "Doll";
-        }
+        void Move();
     }
 }

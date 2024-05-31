@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TestCode
 {
-    internal interface IPrintable
+    internal interface IUniversity
     {
-        void Print();
+        void Study();
     }
 }

@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace TestCode
 {
-    internal interface IPerson
+    internal class HeroAction : BaseAction, IAction
     {
-       string Print()
-        {
-            return "Человек";
-        }
+        void IAction.Move() => Console.WriteLine("Move in HeroAction");
     }
 }
