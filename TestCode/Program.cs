@@ -27,8 +27,8 @@ namespace TestCode
             Message message2;
             message2 = welcome.Print;
 
-            message1();
-            message2();
+            message1.Invoke();
+            message2.Invoke();
 
 
 
