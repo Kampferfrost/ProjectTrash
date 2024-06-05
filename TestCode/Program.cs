@@ -3,6 +3,8 @@
 namespace TestCode
 {
     delegate void Message();
+
+    delegate T Operation<T, K>(K val);
     internal class Program
     {
         static void Main(string[] args)
@@ -19,18 +21,18 @@ namespace TestCode
 
             //Console.WriteLine();
 
-            Hello hello = new Hello();
-            Message message1;
-            message1 = hello.Display;
+            Operation<decimal, int> squareOperation = Square;
+            decimal result1 = squareOperation.Invoke(5);
+            Console.WriteLine(result1);
 
-            Welcome welcome = new Welcome();
-            Message message2;
-            message2 = welcome.Print;
-
-            message1.Invoke();
-            message2.Invoke();
+            Operation<int, int> doubleOperation = Double;
+            Console.WriteLine(doubleOperation.Invoke(7));
 
 
+
+
+            decimal Square(int n) => n * n;
+            int Double(int n) => n + n;
 
 
         }
