@@ -1,20 +1,13 @@
 ﻿namespace TestCode
 {
-
+    public delegate void AccountHandler(string message);
     internal class Account
     {
-        public int Sum { get; private set; }
-        public Account(int sum) => Sum = sum;
-
-        public void Put(int sum) => Sum += sum;
-        public void Take (int sum)
+        private int _sum;
+        public void Add(int sum) => _sum += sum;
+        public void Take(int sum)
         {
-            if (Sum >= sum)
-            {
-                Sum -= sum;
-            }
+            if (_sum >= sum) _sum = sum;
         }
-
-
     }
 }
