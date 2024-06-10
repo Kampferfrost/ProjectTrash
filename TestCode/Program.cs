@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+﻿using TestLibraryDelegate;
 namespace TestCode
 {
 
@@ -7,7 +6,7 @@ namespace TestCode
     {
         static void Main(string[] args)
         {
-            Account account = new Account(200);
+            Account account = new Account(200); // что тебе не нравиться?
             account.RegisterHandler(PrintSimpleMessage);
             account.RegisterHandler(PrintColorMessage);
 
