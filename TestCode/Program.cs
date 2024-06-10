@@ -1,4 +1,6 @@
-﻿using TestLibraryDelegate;
+﻿
+using ReturnCirnoWord;
+
 namespace TestCode
 {
 
@@ -6,25 +8,10 @@ namespace TestCode
     {
         static void Main(string[] args)
         {
-            Account account = new Account(200); // что тебе не нравиться?
-            account.RegisterHandler(PrintSimpleMessage);
-            account.RegisterHandler(PrintColorMessage);
+            CirnoWords cirnoWords = new CirnoWords();
 
-            account.Take(100);
-            account.Take(150);
+            Console.WriteLine(cirnoWords.SayCirno());
 
-            account.UnregisterHandler(PrintColorMessage);
-
-            account.Take(50);
-
-
-            void PrintSimpleMessage(string message) => Console.WriteLine(message);
-            void PrintColorMessage(string message)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(message);
-                Console.ResetColor();
-            }
         }
 
     }
