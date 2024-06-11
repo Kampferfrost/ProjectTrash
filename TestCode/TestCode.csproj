@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ReturnCirnoWord\ReturnCirnoWord.csproj" />
+    <Reference Include="ReturnCirnoWord">
+      <HintPath>bin\Debug\net8.0\ReturnCirnoWord.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 
