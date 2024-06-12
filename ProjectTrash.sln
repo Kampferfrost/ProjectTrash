@@ -63,6 +63,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PassengerTrain", "Passenger
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskExample", "TaskExample\TaskExample.csproj", "{CE1319D7-2B44-4E17-835D-D9AB93467EC4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{C6509D5C-C3F0-4568-BB28-3507F77313AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLiblary", "TestLiblary\TestLiblary.csproj", "{98EFCE1F-A8D0-4859-9863-C22737A39493}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +125,10 @@ Global
 		{CE1319D7-2B44-4E17-835D-D9AB93467EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE1319D7-2B44-4E17-835D-D9AB93467EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE1319D7-2B44-4E17-835D-D9AB93467EC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98EFCE1F-A8D0-4859-9863-C22737A39493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98EFCE1F-A8D0-4859-9863-C22737A39493}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98EFCE1F-A8D0-4859-9863-C22737A39493}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98EFCE1F-A8D0-4859-9863-C22737A39493}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,6 +158,7 @@ Global
 		{A1EC9A85-2CC5-48BE-8E24-19EC19366085} = {BF83C65B-799A-4D34-BDE7-043BC0B3F3F5}
 		{E197E4CC-C41B-409E-BC46-66C9BA218D74} = {A1EC9A85-2CC5-48BE-8E24-19EC19366085}
 		{CE1319D7-2B44-4E17-835D-D9AB93467EC4} = {00D66804-D973-427D-9DE2-1735B73D9692}
+		{98EFCE1F-A8D0-4859-9863-C22737A39493} = {C6509D5C-C3F0-4568-BB28-3507F77313AD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {12D5FE96-C601-4260-B4C8-771AC01ADFDD}
