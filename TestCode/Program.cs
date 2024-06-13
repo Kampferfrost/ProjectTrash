@@ -1,4 +1,6 @@
-﻿using ReturnCirnoWord;
+﻿
+
+using TestLiblary;
 
 namespace TestCode
 {
@@ -7,11 +9,12 @@ namespace TestCode
     {
         static void Main(string[] args)
         {
-            string say;
-            CirnoWords cirnoWords = new CirnoWords();
-            say = cirnoWords.SayCirno();
-
-            Console.WriteLine(say);
+            Account account = new Account(200);
+            account.RegisterHandler(PrintSimpleMessage);
+            account.Take(100);
+            account.Take(150);
+            
+            void PrintSimpleMessage(string message) => Console.WriteLine(message);
 
         }
 
