@@ -1,6 +1,4 @@
-﻿
-
-using TestLiblary;
+﻿using TestLiblary;
 
 namespace TestCode
 {
@@ -9,13 +7,16 @@ namespace TestCode
     {
         static void Main(string[] args)
         {
-            Account account = new Account(200);
-            account.RegisterHandler(PrintSimpleMessage);
-            account.Take(100);
-            account.Take(150);
-            
-            void PrintSimpleMessage(string message) => Console.WriteLine(message);
+            Account account = new Account(100);
+            account.Notify += DisplayMessage;
+            account.Put(20);
+            Console.WriteLine($"Сумма на счете: {account.Sum}");
+            account.Take(70);
+            Console.WriteLine($"Сумма на счете: {account.Sum}");
+            account.Take(180);
+            Console.WriteLine($"Сумма на счете: {account.Sum}");
 
+            void DisplayMessage(string message) => Console.WriteLine(message);
         }
 
     }

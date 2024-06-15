@@ -3,25 +3,24 @@
     public delegate void AccountHandler(string message);
     public class Account
     {
-        private int _sum;
-
-        AccountHandler? taken;
-        public Account(int sum) => _sum = sum;
-        public void RegisterHandler(AccountHandler del)
+        public int Sum { get; private set; }
+        public event AccountHandler? Notify;
+        public Account(int sum) => Sum = sum;
+        public void Put(int sum)
         {
-            taken = del;
+            Sum += sum;
+            Notify?.Invoke($"На счет поступило: {sum}");
         }
-        public void Add(int sum) => _sum += sum;
         public void Take(int sum)
         {
-            if (_sum >= sum)
+            if (Sum >= sum)
             {
-                _sum -= sum;
-                taken?.Invoke($"Со счета списано {sum} у. е.");
+                Sum -= sum;
+                Notify?.Invoke($"Со счета списано {sum} у. е.");
             }
             else
             {
-                taken?.Invoke($"Недостаточно средств: Баланс: {_sum} у.е.");
+                Notify?.Invoke($"Недостаточно средств: Баланс: {Sum} у.е.");
             }
         }
 
