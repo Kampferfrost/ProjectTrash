@@ -7,17 +7,15 @@ namespace TestCode
     {
         static void Main(string[] args)
         {
-            Account account = new Account(100);
-            account.Notify += DisplayMessage;
-            account.Put(20);
-            Console.WriteLine($"Сумма на счете: {account.Sum}");
-            account.Take(70);
-            Console.WriteLine($"Сумма на счете: {account.Sum}");
-            account.Take(180);
-            Console.WriteLine($"Сумма на счете: {account.Sum}");
+            StockExchangeMonitor stockExchangeMonitor = new StockExchangeMonitor();
+            stockExchangeMonitor.PriceChangeHandler = ShowPrice;
+            stockExchangeMonitor.Start();
 
-            void DisplayMessage(string message) => Console.WriteLine(message);
+
+            void ShowPrice(int price) => Console.WriteLine($"New price is: {price}");
+
         }
+
 
     }
 
