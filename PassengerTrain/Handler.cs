@@ -1,5 +1,5 @@
 ﻿using PassengerTrain.Models;
-using PassengerTrain.Mosels;
+using PassengerTrain.Mosels; //почему вас тут 2 штуки?
 
 namespace PassengerTrain
 {
@@ -24,7 +24,7 @@ namespace PassengerTrain
             _cities.Add(city);
         }
 
-        #endregion Ciry
+        #endregion City
 
         #region TrainDirections
 
