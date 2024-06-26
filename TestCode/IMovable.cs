@@ -5,7 +5,7 @@
     {
         
         protected internal void Move();
-        protected string Name { get; }
+        protected internal string Name { get; }
         protected internal event MoveHandler MoveEvent;
 
     }
