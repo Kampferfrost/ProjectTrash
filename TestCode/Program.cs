@@ -1,6 +1,6 @@
 ﻿namespace TestCode
 {
-    delegate void MoveHandler(); // нужно протестировать, запихнем в разные cs файлы. Будет ли он работать тогде?
+    delegate void MoveHandler(); 
     internal class Program
     {
         static void Main(string[] args)
