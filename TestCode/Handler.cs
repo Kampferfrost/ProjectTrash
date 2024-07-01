@@ -6,12 +6,6 @@
 
         public CalculateBonus? CalculateBonusForEmployee { get; set; }
 
-        private void CalculateBonuses(IEnumerable<Employee> employees)
-        {
-            foreach(Employee employee in employees)
-            {
-                employee.Bonus = CalculateBonusForEmployee(employee.Position);
-            }
-        }
+        
     }
 }
