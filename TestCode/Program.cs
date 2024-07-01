@@ -1,22 +1,43 @@
 ﻿namespace TestCode
 {
-    delegate void MoveHandler(); 
+    enum Position
+    {
+        Manager,
+        VicePresident
+    }
+
     internal class Program
     {
         static void Main(string[] args)
         {
-            IMovable tom = new Person("Tom");
+            Handler handler = new Handler();
 
-            tom.MoveEvent += () => Console.WriteLine($"{tom.Name} is moving");
-            tom.Move();
-            
+            handler.CalculateBonusForEmployee = BonusEmployee;
+
+            Console.WriteLine(handler.CalculateBonusForEmployee(Position.Manager));
+
+
+            int BonusEmployee(Position position)
+            {
+                int bonus = 5;
+                return bonus;
+            }
+
         }
 
+       
 
     }
 
+    
+
+
+
 
 }
+
+
+
 
 
 
