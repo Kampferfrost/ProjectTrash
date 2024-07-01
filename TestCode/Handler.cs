@@ -2,9 +2,17 @@
 {
     internal class Handler
     {
-        public delegate int CalculateBonus(Position position);
+        public delegate void Congratulate(int employeeId);
 
-        public CalculateBonus? CalculateBonusForEmployee { get; set; }
+        public event Congratulate Congatulated;
+
+        public void CongratulateEmployees(Employee employee)
+        {
+
+
+                Congatulated(employee.Id);
+
+        }
 
         
     }
