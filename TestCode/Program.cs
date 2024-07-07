@@ -13,8 +13,7 @@
             account.Take(180);  // пытаемся снять со счета 180
             Console.WriteLine($"Сумма на счете: {account.Sum}");
 
-
-
+            account.Notify -= DisplayMessage;
 
             void DisplayMessage(string message, ConsoleColor color)
             {

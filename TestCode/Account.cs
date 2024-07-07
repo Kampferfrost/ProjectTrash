@@ -4,24 +4,45 @@
 
     internal class Account
     {
-        public event AccountHandler? Notify;
+        AccountHandler? notify;
+        public event AccountHandler? Notify
+        {
+            add
+            {
+                if (value != null)
+                {
+                    notify += value;
+                    Console.WriteLine($"{value.Method.Name} добавлен");
+                }
+                
+            }
+            remove
+            {
+                if (value != null)
+                {
+                    notify -= value;
+                    Console.WriteLine($"{value.Method.Name} удалён");
+                }
+                
+            }
+        }
         public int Sum { get; private set; }
         public Account(int sum) => Sum = sum;
         public void Put(int sum)
         {
             Sum += sum;
-            Notify?.Invoke($"На счет поступило: {sum}", ConsoleColor.Green);
+            notify?.Invoke($"На счет поступило: {sum}", ConsoleColor.Green);
         }
         public void Take(int sum)
         {
             if (Sum >= sum)
             {
                 Sum -= sum;
-                Notify?.Invoke($"Со счета снято: {sum}", ConsoleColor.Yellow);
+                notify?.Invoke($"Со счета снято: {sum}", ConsoleColor.Yellow);
             }
             else
             {
-                Notify?.Invoke($"Недостаточно денег на счете. Текущий баланс: {Sum}", ConsoleColor.Red);
+                notify?.Invoke($"Недостаточно денег на счете. Текущий баланс: {Sum}", ConsoleColor.Red);
             }
 
 
