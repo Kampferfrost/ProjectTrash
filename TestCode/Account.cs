@@ -1,8 +1,8 @@
 ﻿namespace TestCode
 {
-    public delegate void AccountHandler(string message, ConsoleColor color);
+    public delegate void AccountHandler( ConsoleColor color, Account sender, AccountEventArgs e);
 
-    internal class Account
+    public class Account
     {
         AccountHandler? notify;
         public event AccountHandler? Notify
@@ -31,18 +31,18 @@
         public void Put(int sum)
         {
             Sum += sum;
-            notify?.Invoke($"На счет поступило: {sum}", ConsoleColor.Green);
+            notify?.Invoke( ConsoleColor.Green, this, new AccountEventArgs($"На счет поступило: {sum}", sum));
         }
         public void Take(int sum)
         {
             if (Sum >= sum)
             {
                 Sum -= sum;
-                notify?.Invoke($"Со счета снято: {sum}", ConsoleColor.Yellow);
+                notify?.Invoke( ConsoleColor.Yellow, this, new AccountEventArgs($"Со счета снято: {sum}", sum));
             }
             else
             {
-                notify?.Invoke($"Недостаточно денег на счете. Текущий баланс: {Sum}", ConsoleColor.Red);
+                notify?.Invoke(ConsoleColor.Red, this, new AccountEventArgs($"Недостаточно денег на счете. Текущий баланс: {Sum}", Sum));
             }
 
 

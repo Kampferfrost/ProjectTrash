@@ -15,10 +15,10 @@
 
             account.Notify -= DisplayMessage;
 
-            void DisplayMessage(string message, ConsoleColor color)
+            void DisplayMessage(ConsoleColor color, Account sender, AccountEventArgs e)
             {
                 Console.ForegroundColor = color;
-                Console.WriteLine(message);
+                Console.WriteLine(e.Message);
                 Console.ResetColor();
             }
 
