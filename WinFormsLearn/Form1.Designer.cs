@@ -80,6 +80,7 @@
             checkBox1.TabIndex = 1;
             checkBox1.Text = "Stretch";
             checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // flowLayoutPanel1
             // 
