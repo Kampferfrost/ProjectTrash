@@ -15,6 +15,11 @@ namespace MathQuizApp
         int dividend;
         int divisor;
 
+        int timeLeft;
+
+
+
+
         /// <summary>
         /// Start the quiz by filling in all of the problems
         /// nad starting the timer.

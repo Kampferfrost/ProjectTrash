@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             timeLabel = new Label();
             label1 = new Label();
             plusLeftLabel = new Label();
@@ -51,6 +52,7 @@
             label14 = new Label();
             timesLeftLabel = new Label();
             startButton = new Button();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)sum).BeginInit();
             ((System.ComponentModel.ISupportInitialize)difference).BeginInit();
             ((System.ComponentModel.ISupportInitialize)quotient).BeginInit();
@@ -284,6 +286,10 @@
             startButton.UseVisualStyleBackColor = true;
             startButton.Click += starButton_Click;
             // 
+            // timer1
+            // 
+            timer1.Interval = 1000;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -349,5 +355,6 @@
         private Label label14;
         private Label timesLeftLabel;
         private Button startButton;
+        private System.Windows.Forms.Timer timer1;
     }
 }
