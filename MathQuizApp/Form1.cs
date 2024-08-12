@@ -54,6 +54,11 @@ namespace MathQuizApp
             InitializeComponent();
         }
 
+        private void starButton_Click(object sender, EventArgs e)
+        {
+            StartTheQuiz();
+            startButton.Enabled = false;
+        }
     }
-    
+
 }

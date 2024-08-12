@@ -50,7 +50,7 @@
             timesRightLabel = new Label();
             label14 = new Label();
             timesLeftLabel = new Label();
-            starButton = new Button();
+            startButton = new Button();
             ((System.ComponentModel.ISupportInitialize)sum).BeginInit();
             ((System.ComponentModel.ISupportInitialize)difference).BeginInit();
             ((System.ComponentModel.ISupportInitialize)quotient).BeginInit();
@@ -272,23 +272,24 @@
             timesLeftLabel.Text = "?";
             timesLeftLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // starButton
+            // startButton
             // 
-            starButton.AutoSize = true;
-            starButton.Font = new Font("Segoe UI", 14F);
-            starButton.Location = new Point(167, 314);
-            starButton.Name = "starButton";
-            starButton.Size = new Size(133, 35);
-            starButton.TabIndex = 0;
-            starButton.Text = "Start the quiz";
-            starButton.UseVisualStyleBackColor = true;
+            startButton.AutoSize = true;
+            startButton.Font = new Font("Segoe UI", 14F);
+            startButton.Location = new Point(167, 314);
+            startButton.Name = "startButton";
+            startButton.Size = new Size(133, 35);
+            startButton.TabIndex = 0;
+            startButton.Text = "Start the quiz";
+            startButton.UseVisualStyleBackColor = true;
+            startButton.Click += starButton_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(484, 361);
-            Controls.Add(starButton);
+            Controls.Add(startButton);
             Controls.Add(dividedRightLabel);
             Controls.Add(label9);
             Controls.Add(dividedLeftLabel);
@@ -347,6 +348,6 @@
         private Label timesRightLabel;
         private Label label14;
         private Label timesLeftLabel;
-        private Button starButton;
+        private Button startButton;
     }
 }
