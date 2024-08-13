@@ -79,6 +79,33 @@ namespace MathQuizApp
             StartTheQuiz();
             startButton.Enabled = false;
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (CheckTheAnswer())
+            {
+                timer1.Stop();
+                MessageBox.Show("You got all the answers right!" ,
+                    "Congratulations!");
+                startButton.Enabled = true;
+            }
+            else if(timeLeft > 0)
+            {
+                timeLeft = timeLeft - 1;
+                timeLabel.Text = timeLeft + " seconds";
+            }
+            else
+            {
+                timer1.Stop();
+                timeLabel.Text = "Time's up!";
+                MessageBox.Show("You didn't finish in time.", "Sorry!");
+                sum.Value = addend1 + addend2;
+                difference.Value = minuend - subtrahend;
+                product.Value = multiplicand * multiplier;
+                quotient.Value = dividend / divisor;
+                startButton.Enabled = true;
+            }
+        }
     }
 
 }
