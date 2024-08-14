@@ -50,7 +50,10 @@ namespace MathQuizApp
             dividedLeftLabel.Text = dividend.ToString();
             dividedRightLabel.Text = divisor.ToString();
             quotient.Value = 0;
-            // что такое temproraryQuotiont?
+
+            timeLeft = 30;
+            timeLabel.Text = "30 seconds";
+            timer1.Start();
         }
 
         /// <summary>
