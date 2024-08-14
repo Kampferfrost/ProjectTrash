@@ -126,6 +126,7 @@
             sum.Name = "sum";
             sum.Size = new Size(100, 39);
             sum.TabIndex = 1;
+            sum.Enter += answer_Enter;
             // 
             // label3
             // 

@@ -88,11 +88,11 @@ namespace MathQuizApp
             if (CheckTheAnswer())
             {
                 timer1.Stop();
-                MessageBox.Show("You got all the answers right!" ,
+                MessageBox.Show("You got all the answers right!",
                     "Congratulations!");
                 startButton.Enabled = true;
             }
-            else if(timeLeft > 0)
+            else if (timeLeft > 0)
             {
                 timeLeft = timeLeft - 1;
                 timeLabel.Text = timeLeft + " seconds";
@@ -107,6 +107,17 @@ namespace MathQuizApp
                 product.Value = multiplicand * multiplier;
                 quotient.Value = dividend / divisor;
                 startButton.Enabled = true;
+            }
+        }
+
+        private void answer_Enter(object sender, EventArgs e)
+        {
+            NumericUpDown answerBox = sender as NumericUpDown;
+
+            if (answerBox != null)
+            {
+                int lengthOfAnswer = answerBox.Value.ToString().Length;
+                answerBox.Select(0, lengthOfAnswer);
             }
         }
     }
