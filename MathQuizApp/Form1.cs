@@ -54,6 +54,8 @@ namespace MathQuizApp
             timeLeft = 30;
             timeLabel.Text = "30 seconds";
             timer1.Start();
+            
+
         }
 
         /// <summary>
@@ -91,11 +93,16 @@ namespace MathQuizApp
                 MessageBox.Show("You got all the answers right!",
                     "Congratulations!");
                 startButton.Enabled = true;
+                timeLabel.BackColor = default;
             }
             else if (timeLeft > 0)
             {
                 timeLeft = timeLeft - 1;
                 timeLabel.Text = timeLeft + " seconds";
+                if (timeLeft <= 5)
+                {
+                    timeLabel.BackColor = Color.Red;
+                }
             }
             else
             {
