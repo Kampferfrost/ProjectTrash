@@ -126,6 +126,7 @@
             sum.Name = "sum";
             sum.Size = new Size(100, 39);
             sum.TabIndex = 1;
+            sum.Click += answer_Enter;
             sum.Enter += answer_Enter;
             // 
             // label3
@@ -146,6 +147,8 @@
             difference.Name = "difference";
             difference.Size = new Size(100, 39);
             difference.TabIndex = 2;
+            difference.Click += answer_Enter;
+            difference.Enter += answer_Enter;
             // 
             // minusRightLabel
             // 
@@ -215,6 +218,8 @@
             quotient.Name = "quotient";
             quotient.Size = new Size(100, 39);
             quotient.TabIndex = 4;
+            quotient.Click += answer_Enter;
+            quotient.Enter += answer_Enter;
             // 
             // label11
             // 
@@ -234,6 +239,8 @@
             product.Name = "product";
             product.Size = new Size(100, 39);
             product.TabIndex = 3;
+            product.Click += answer_Enter;
+            product.Enter += answer_Enter;
             // 
             // label12
             // 
