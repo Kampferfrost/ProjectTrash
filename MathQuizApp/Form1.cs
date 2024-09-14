@@ -135,10 +135,7 @@ namespace MathQuizApp
         private void true_Answer(object sender, EventArgs e)
         {
             NumericUpDown trueBox = sender as NumericUpDown;
-            if (trueBox.Value == 5)
-            {
-                trueBox.ForeColor = Color.Green;
-            }
+
             if (addend1 + addend2 == sum.Value)
             {
                 trueBox.ForeColor = Color.Green;
