@@ -54,7 +54,7 @@ namespace MathQuizApp
             timeLeft = 30;
             timeLabel.Text = "30 seconds";
             timer1.Start();
-            
+
 
         }
 
@@ -72,7 +72,6 @@ namespace MathQuizApp
             else
                 return false;
         }
-
 
         public Form1()
         {
@@ -115,7 +114,12 @@ namespace MathQuizApp
                 quotient.Value = dividend / divisor;
                 startButton.Enabled = true;
             }
+
+            
+
+
         }
+
 
         private void answer_Enter(object sender, EventArgs e)
         {
@@ -126,6 +130,32 @@ namespace MathQuizApp
                 int lengthOfAnswer = answerBox.Value.ToString().Length;
                 answerBox.Select(0, lengthOfAnswer);
             }
+        }
+
+        private void true_Answer(object sender, EventArgs e)
+        {
+            NumericUpDown trueBox = sender as NumericUpDown;
+            if (trueBox.Value == 5)
+            {
+                trueBox.ForeColor = Color.Green;
+            }
+            if (addend1 + addend2 == sum.Value)
+            {
+                trueBox.ForeColor = Color.Green;
+            }
+            if (minuend - subtrahend == difference.Value)
+            {
+                trueBox.ForeColor = Color.Green;
+            }
+            if (multiplicand * multiplier == product.Value)
+            {
+                trueBox.ForeColor = Color.Green;
+            }
+            if (dividend / divisor == quotient.Value)
+            {
+                trueBox.ForeColor = Color.Green;
+            }
+
         }
     }
 
