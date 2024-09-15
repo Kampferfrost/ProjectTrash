@@ -115,7 +115,7 @@ namespace MathQuizApp
                 startButton.Enabled = true;
             }
 
-            
+
 
 
         }
@@ -132,26 +132,51 @@ namespace MathQuizApp
             }
         }
 
+        private bool CheckAAnswer(NumericUpDown trueBox)
+        {
+            if (timer1.Enabled == true)
+            {
+                Dictionary<string, int> _numbers = new Dictionary<string, int>()
+                {
+                    { sum.Name, addend1 + addend2 },
+                    { difference.Name, minuend - subtrahend },
+                    { product.Name, multiplicand * multiplier },
+                    { quotient.Name, dividend / divisor }
+
+                };
+
+                foreach (var item in _numbers)
+                {
+                    if (item.Key == trueBox.Name)
+                    {
+                        return item.Value == trueBox.Value;
+                    }
+                }
+
+
+
+            }
+
+            return false;
+
+
+        }
+
         private void true_Answer(object sender, EventArgs e)
         {
             NumericUpDown trueBox = sender as NumericUpDown;
 
-            if (addend1 + addend2 == sum.Value)
+            if (CheckAAnswer(trueBox))
             {
                 trueBox.ForeColor = Color.Green;
             }
-            if (minuend - subtrahend == difference.Value)
+            else
             {
-                trueBox.ForeColor = Color.Green;
+                trueBox.ForeColor = default;
             }
-            if (multiplicand * multiplier == product.Value)
-            {
-                trueBox.ForeColor = Color.Green;
-            }
-            if (dividend / divisor == quotient.Value)
-            {
-                trueBox.ForeColor = Color.Green;
-            }
+
+
+
 
         }
     }
