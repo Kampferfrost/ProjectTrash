@@ -1,3 +1,5 @@
+using System.Media;
+
 namespace MathQuizApp
 {
     public partial class Form1 : Form
@@ -169,6 +171,8 @@ namespace MathQuizApp
             if (CheckAAnswer(trueBox))
             {
                 trueBox.ForeColor = Color.Green;
+                SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\Windows Unlock.wav");
+                simpleSound.Play();
             }
             else
             {
