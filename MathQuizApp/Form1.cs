@@ -19,6 +19,7 @@ namespace MathQuizApp
 
         int timeLeft;
 
+        Dictionary<string, int> _numbers = new Dictionary<string, int>();
 
 
 
@@ -57,7 +58,11 @@ namespace MathQuizApp
             timeLabel.Text = "30 seconds";
             timer1.Start();
 
-
+            _numbers.Clear();
+            _numbers.Add(sum.Name, addend1 + addend2);
+            _numbers.Add(difference.Name, minuend - subtrahend);
+            _numbers.Add(product.Name, multiplicand * multiplier);
+            _numbers.Add(quotient.Name, dividend / divisor);
         }
 
         /// <summary>
@@ -134,18 +139,13 @@ namespace MathQuizApp
             }
         }
 
+
+
         private bool CheckAAnswer(NumericUpDown trueBox)
         {
             if (timer1.Enabled == true)
             {
-                Dictionary<string, int> _numbers = new Dictionary<string, int>()
-                {
-                    { sum.Name, addend1 + addend2 },
-                    { difference.Name, minuend - subtrahend },
-                    { product.Name, multiplicand * multiplier },
-                    { quotient.Name, dividend / divisor }
 
-                };
 
                 foreach (var item in _numbers)
                 {
