@@ -171,8 +171,11 @@ namespace MathQuizApp
             if (CheckAAnswer(trueBox))
             {
                 trueBox.ForeColor = Color.Green;
-                SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\Windows Unlock.wav");
-                simpleSound.Play();
+                SoundPlayer simpleSound = new SoundPlayer("media\\Windows Unlock.wav");
+                if (simpleSound != null)
+                {
+                    simpleSound.Play();
+                }
             }
             else
             {
