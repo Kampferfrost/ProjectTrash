@@ -12,6 +12,7 @@ namespace MatchingGame
         public Form1()
         {
             InitializeComponent();
+            AssignIconsToSquares();
         }
         ///<summary>
         /// Assign each icon from the list of icons to a random square
