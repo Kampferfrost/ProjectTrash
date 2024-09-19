@@ -47,8 +47,17 @@ namespace MatchingGame
             {
                 if (clickedLabel.ForeColor == Color.Black)
                     return;
-                clickedLabel.ForeColor = Color.Black;
+                if (firstClicked == null)
+                {
+                    firstClicked = clickedLabel;
+                    firstClicked.ForeColor = Color.Black;
+                    return;
+                }
             }
         }
+
+        Label? firstClicked = null;
+        Label? secondClicked = null;
+
     }
 }
