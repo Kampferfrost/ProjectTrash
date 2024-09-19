@@ -1,3 +1,5 @@
+using System.Reflection.Metadata.Ecma335;
+
 namespace MatchingGame
 {
     public partial class Form1 : Form
@@ -32,9 +34,21 @@ namespace MatchingGame
             }
         }
 
+        /// <summary>
+        /// Every label's Click event is handled by this event handler
+        /// </summary>
+        /// <param name="sender">The label that was clicked</param>
+        /// <param name="e"></param>
         private void label1_Click(object sender, EventArgs e)
         {
+            Label clickedLabel = sender as Label;
 
+            if (clickedLabel != null)
+            {
+                if (clickedLabel.ForeColor == Color.Black)
+                    return;
+                clickedLabel.ForeColor = Color.Black;
+            }
         }
     }
 }
