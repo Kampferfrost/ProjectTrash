@@ -41,6 +41,9 @@ namespace MatchingGame
         /// <param name="e"></param>
         private void label1_Click(object sender, EventArgs e)
         {
+            if (timer1.Enabled == true)
+                return;
+
             Label clickedLabel = sender as Label;
 
             if (clickedLabel != null)
@@ -53,11 +56,43 @@ namespace MatchingGame
                     firstClicked.ForeColor = Color.Black;
                     return;
                 }
+
+
+                secondClicked = clickedLabel;
+                secondClicked.ForeColor = Color.Black;
+
+                timer1.Start();
+
             }
         }
 
         Label? firstClicked = null;
         Label? secondClicked = null;
 
+        /// <summary>
+        /// This timer is started when the player clicks
+        /// two icon that don't match,
+        /// so it counts three quarters of a second
+        /// and then turns itself off and hides both icons
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // Stop the timer
+            timer1.Stop();
+
+            // Hide both icons
+            firstClicked.ForeColor = firstClicked.BackColor;
+            secondClicked.ForeColor = secondClicked.BackColor;
+
+            // Reset firstClicked and secondClicked
+            // so the next time a label is
+            // clicked, the program knows it's the first click
+            firstClicked = null;
+            secondClicked = null;
+
+
+        }
     }
 }
