@@ -244,6 +244,7 @@
             // 
             // label3
             // 
+            label3.BackColor = Color.CornflowerBlue;
             label3.Dock = DockStyle.Fill;
             label3.Font = new Font("Webdings", 48F, FontStyle.Bold, GraphicsUnit.Point, 2);
             label3.Location = new Point(271, 2);
