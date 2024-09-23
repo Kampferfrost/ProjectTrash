@@ -271,6 +271,7 @@
             // 
             label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Webdings", 48F, FontStyle.Bold, GraphicsUnit.Point, 2);
+            label1.ForeColor = SystemColors.ControlText;
             label1.Location = new Point(5, 2);
             label1.Name = "label1";
             label1.Size = new Size(125, 125);

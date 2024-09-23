@@ -22,6 +22,10 @@
                 Console.WriteLine($"Сумма на счете: {sender.Sum}");
             }
 
+            Guid g = new Guid();
+            g = Guid.NewGuid();
+            Console.WriteLine(g);
+
         }
     }
 
