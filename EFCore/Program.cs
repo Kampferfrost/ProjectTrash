@@ -1,8 +1,4 @@
-﻿using EFCore;
-using System.Linq;
-
-
-namespace EFCore
+﻿namespace EFCore
 {
 
     internal class Program
@@ -15,22 +11,26 @@ namespace EFCore
             using (ApplicationContextTohou db = new ApplicationContextTohou())
             {
                 // создаем два объекта User
-                User tom = new User { Name = "Tom", Age = 33 };
-                User alice = new User { Name = "Alice", Age = 26 };
+                User tom = new User() { Name = "Tom", Age = 33 };
+                User alice = new User() { Name = "Alice", Age = 26 };
+                User borscht = new User() { Name = "BorshtColler", Age = 32 };
 
                 // добавляем их в бд
                 db.Users.Add(tom);
                 db.Users.Add(alice);
+                db.Users.Add(borscht);
                 db.SaveChanges();
                 Console.WriteLine("Объекты успешно сохранены");
 
-                // получаем объекты из бд и выводим на консоль
+                // получаем объекты из бд и выводи на консоль
                 var users = db.Users.ToList();
                 Console.WriteLine("Список объектов:");
                 foreach (User u in users)
                 {
                     Console.WriteLine($"{u.Id}.{u.Name} - {u.Age}");
                 }
+
+
             }
 
         }
