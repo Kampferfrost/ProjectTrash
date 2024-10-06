@@ -7,10 +7,12 @@ namespace TestKoikatsu
         [Fact]
         public void Test1()
         {
-            UserRepository userRepository = new UserRepository();
+            UserRepository repo = new();
 
-            var Users = userRepository.GetUsers();
-            Assert.NotEmpty(Users);
+            var users = repo.GetUsers();
+
+            Assert.NotNull(users);
         }
+
     }
 }

@@ -2,35 +2,28 @@
 {
     internal class Program
     {
-        public DataPlayers dataPlayers = new DataPlayers();
+        public DataPlayers dataPlayers = new();
+
         static void Main(string[] args)
         {
-            
-            Controller controller = new Controller();
-            ViewerMenu menu = new ViewerMenu(dataPlayers);
+            NewMethod();
+        }
 
-            while (true)
-            {
+        private static void NewMethod()
+        {
+            //Controller controller = new Controller();
+            //ViewerMenu menu = new ViewerMenu(dataPlayers);
 
-                
+            //while (true)
+            //{
+            //    menu.ShowMenu();
+            //    menu.ShowAllPlayers();
+            //    menu.ChoseCommand();
+            //    menu.DoCommand();
 
-                menu.ShowMenu();
-                menu.ShowAllPlayers();
-                menu.ChoseCommand();
-                menu.DoCommand();
-
-
-                Console.ReadKey();
-                Console.Clear();
-
-
-            }
-
-            
-
-
-
-            
+            //    Console.ReadKey();
+            //    Console.Clear();
+            //}
         }
     }
 }

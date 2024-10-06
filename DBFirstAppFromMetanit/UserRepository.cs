@@ -2,10 +2,10 @@
 {
     public class UserRepository
     {
-        public IEnumerable<User> GetUsers()
+        public List<User> GetUsers()
         {
             using var context = GetContext;
-            return context.Users;
+            return context.Users.ToList();
         }
 
         public User? GetUser(int id)
