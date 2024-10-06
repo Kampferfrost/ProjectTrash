@@ -22,8 +22,6 @@ namespace EFCore
                 {
                     Console.WriteLine($"{user.Id} {user.Name} {user.Age}");
                 }
-
-
             }
         }
 
