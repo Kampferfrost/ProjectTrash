@@ -1,41 +1,35 @@
-﻿namespace EFCore
+﻿
+
+namespace EFCore
 {
 
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, Cirno!");
-
-            // перепесать это вручную чтобы лучше понимать
-            using (ApplicationContextTohou db = new ApplicationContextTohou())
+            using (ApplicationContextWet db = new ApplicationContextWet())
             {
-                // создаем два объекта User
-                User tom = new User() { Name = "Tom", Age = 33 };
-                User alice = new User() { Name = "Alice", Age = 26 };
-                User borscht = new User() { Name = "BorshtColler", Age = 32 };
+                User hikita = new User() { Name = "Hikita", Age = 42 };
+                User Slam = new User() { Name = "Slam", Age = 42 };
 
-                // добавляем их в бд
-                db.Users.Add(tom);
-                db.Users.Add(alice);
-                db.Users.Add(borscht);
+                db.Users.Add(hikita);
+                db.Users.Add(Slam);
                 db.SaveChanges();
-                Console.WriteLine("Объекты успешно сохранены");
-
-                // получаем объекты из бд и выводи на консоль
+                
                 var users = db.Users.ToList();
                 Console.WriteLine("Список объектов:");
-                foreach (User u in users)
+                foreach (var user in users)
                 {
-                    Console.WriteLine($"{u.Id}.{u.Name} - {u.Age}");
+                    Console.WriteLine($"{user.Id} {user.Name} {user.Age}");
                 }
 
 
             }
-
         }
 
     }
+
+
 }
 
 
