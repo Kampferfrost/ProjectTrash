@@ -2,9 +2,12 @@
 {
     internal class Program
     {
+        static CharacterRepository _characterRepository = new CharacterRepository();
+
         static void Main(string[] args)
         {
-            Console.WriteLine("text");
+            
+            _characterRepository.CreatDB();
         }
     }
 

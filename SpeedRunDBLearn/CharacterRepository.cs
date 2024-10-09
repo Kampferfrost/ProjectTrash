@@ -2,7 +2,12 @@
 {
     internal class CharacterRepository
     {
-        private AnimeGirlsContext context => new AnimeGirlsContext();
+        private AnimeGirlsContext GetContext => new AnimeGirlsContext();
+
+        public void CreatDB()
+        {
+            var dsfdsf = GetContext;
+        }
     }
 
 
