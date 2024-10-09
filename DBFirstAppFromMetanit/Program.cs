@@ -9,6 +9,7 @@
 
             DisplayAllUser();
             DeleteHikita();
+            _userRepository.GetUser(5);
 
         }
 

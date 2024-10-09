@@ -83,7 +83,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntityPrameworkCore", "Enti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBFirstAppFromMetanit", "DBFirstAppFromMetanit\DBFirstAppFromMetanit.csproj", "{B6A58613-0CDE-4575-8729-0838852A739B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestKoikatsu", "TestKoikatsu\TestKoikatsu.csproj", "{D925BD81-D7D0-432C-8C74-2388EF9B7030}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestKoikatsu", "TestKoikatsu\TestKoikatsu.csproj", "{D925BD81-D7D0-432C-8C74-2388EF9B7030}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedRunDBLearn", "SpeedRunDBLearn\SpeedRunDBLearn.csproj", "{491101D6-33E6-4605-ACB3-F7B4880611F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -175,6 +177,10 @@ Global
 		{D925BD81-D7D0-432C-8C74-2388EF9B7030}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D925BD81-D7D0-432C-8C74-2388EF9B7030}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D925BD81-D7D0-432C-8C74-2388EF9B7030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{491101D6-33E6-4605-ACB3-F7B4880611F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{491101D6-33E6-4605-ACB3-F7B4880611F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{491101D6-33E6-4605-ACB3-F7B4880611F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{491101D6-33E6-4605-ACB3-F7B4880611F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -213,6 +219,7 @@ Global
 		{B6BEC0EF-9509-41E9-AA07-D03FC190F414} = {00D66804-D973-427D-9DE2-1735B73D9692}
 		{B6A58613-0CDE-4575-8729-0838852A739B} = {B6BEC0EF-9509-41E9-AA07-D03FC190F414}
 		{D925BD81-D7D0-432C-8C74-2388EF9B7030} = {CDA75C93-4DD3-45BB-8186-489D15C02460}
+		{491101D6-33E6-4605-ACB3-F7B4880611F7} = {B6BEC0EF-9509-41E9-AA07-D03FC190F414}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {12D5FE96-C601-4260-B4C8-771AC01ADFDD}

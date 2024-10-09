@@ -7,7 +7,6 @@ namespace EFCore
         public DbSet<User> Users => Set<User>();
         public ApplicationContextWet() => Database.EnsureCreated();
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=Koikatsu.db");
