@@ -6,8 +6,7 @@
 
         static void Main(string[] args)
         {
-            
-            _characterRepository.CreatDB();
+
         }
     }
 

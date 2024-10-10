@@ -4,10 +4,9 @@
     {
         private AnimeGirlsContext GetContext => new AnimeGirlsContext();
 
-        public void CreatDB()
-        {
-            var dsfdsf = GetContext;
-        }
+
+
+
     }
 
 
