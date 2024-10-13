@@ -7,19 +7,23 @@
         static void Main(string[] args)
         {
             GetAllCharacters();
+            SearchCirno();
 
+        }
+
+        private static void SearchCirno()
+        {
             string nameForSearch = "Cirno";
             var FoundCharacter = _characterRepository.GetCharacter(nameForSearch);
             if (FoundCharacter != null)
             {
+                Console.WriteLine("По запросу нашли:");
                 Console.WriteLine(FoundCharacter.Name);
             }
             else
             {
                 Console.WriteLine("Ошибка Запрос вернул null");
             }
-
-
         }
 
         private static void AddCharacterCirno()
@@ -38,7 +42,6 @@
             }
 
         }
-
 
     }
 

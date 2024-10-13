@@ -19,17 +19,11 @@
 
         }
 
-        //сделать проверку на null string name
-        //Find ищет только id нужно с этим разобраться
         public Character? GetCharacter(string name)
         {
             using var context = GetContext;
-            var character = context.Characters.Find(1);
-
-
-            return character;
-
-
+            var characters = context.Characters.FirstOrDefault(c => c.Name == name);
+            return characters;
 
         }
 
