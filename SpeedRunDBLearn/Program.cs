@@ -6,6 +6,7 @@
 
         static void Main(string[] args)
         {
+            AddCharacterCirno();
             GetAllCharacters();
             SearchCirno();
 
@@ -28,7 +29,7 @@
 
         private static void AddCharacterCirno()
         {
-            _characterRepository.CreateCharacter<Character>(new Character() { Name = "Cirno", Birthday = new DateTime(2001, 03, 10) });
+            _characterRepository.CreateCharacter(new Character() { Name = "Reimu", Birthday = new DateTime(2095, 02, 24) });
             GetAllCharacters();
 
         }

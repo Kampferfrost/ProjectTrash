@@ -1,6 +1,6 @@
 ﻿namespace SpeedRunDBLearn
 {
-    internal class CharacterRepository<T>
+    internal class CharacterRepository<T> where T : class
     {
         private AnimeGirlsContext GetContext => new AnimeGirlsContext();
 
@@ -14,7 +14,7 @@
         public int CreateCharacter(T character)
         {
             using var context = GetContext;
-            context.Characters.Add(character);
+            context.Set<T>().Add(character);
             return context.SaveChanges();
 
         }
