@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        static CharacterRepository _characterRepository = new CharacterRepository();
+        static CharacterRepository<Character> _characterRepository = new CharacterRepository<Character>();
 
         static void Main(string[] args)
         {
@@ -28,7 +28,7 @@
 
         private static void AddCharacterCirno()
         {
-            _characterRepository.AddCharacter(new Character() { Name = "Cirno", Birthday = new DateTime(2001, 03, 10) });
+            _characterRepository.CreateCharacter<Character>(new Character() { Name = "Cirno", Birthday = new DateTime(2001, 03, 10) });
             GetAllCharacters();
 
         }
@@ -38,7 +38,7 @@
             var Characters = _characterRepository.GetCharacters();
             foreach (var Character in Characters)
             {
-                Console.WriteLine("ИД " + Character.Id + " " + Character.Name + " " + Character.Birthday.Year);
+                Console.WriteLine("ИД " + Character.Id + " " + Character.Name + " " + Character.Birthday.ToShortDateString());
             }
 
         }
