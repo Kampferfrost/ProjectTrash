@@ -30,7 +30,6 @@
         private static void AddCharacterCirno()
         {
             _characterRepository.CreateCharacter(new Character() { Name = "Reimu", Birthday = new DateTime(2095, 02, 24) });
-            GetAllCharacters();
 
         }
 

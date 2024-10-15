@@ -15,7 +15,8 @@
         {
             using var context = GetContext;
             context.Set<T>().Add(character);
-            return context.SaveChanges();
+            var count = context.SaveChanges();
+            return count;
 
         }
 
