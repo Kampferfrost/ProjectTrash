@@ -1,6 +1,6 @@
 ﻿namespace SpeedRunDBLearn
 {
-    internal class Character
+    internal class Character : BaseEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace SpeedRunDBLearn
 {
-    internal class CharacterRepository<T> where T : class
+    internal class CharacterRepository<T> where T : BaseEntity
     {
         private AnimeGirlsContext GetContext => new AnimeGirlsContext();
 
