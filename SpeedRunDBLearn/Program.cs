@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        static CharacterRepository<Character> _characterRepository = new CharacterRepository<Character>();
+        static AnimeGirlsRepository<Character> _characterRepository = new AnimeGirlsRepository<Character>();
 
         static void Main(string[] args)
         {
