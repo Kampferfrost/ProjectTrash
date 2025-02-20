@@ -4,27 +4,33 @@
     {
         static void Main(string[] args)
         {
-            NotificationService notificationService = new NotificationService();
+            NotificationService notificationService = new NotificationService(new EmailService());
             notificationService.Notify();
         }
     }
 
     internal class NotificationService
     {
+        private readonly IMessageService _messageService;
+
+        public NotificationService(IMessageService messageService)
+        {
+            _messageService = messageService;
+        }
         public void Notify()
         {
-            var emailService = new EmailService();
-            emailService.SendMessage("сообщение");
+
+            _messageService.SendMessage("сообщение");
         }
 
         public void NotifyAll()
         {
-            var emailService = new EmailService();
-            emailService.SendMessage("сообщение");
+            _messageService.SendMessage("сообщение");
+
         }
     }
 
-    internal class EmailService 
+    internal class EmailService : IMessageService
     {
         public void SendMessage(string message)
         {
@@ -32,7 +38,7 @@
         }
     }
 
-    internal class TelegramService
+    internal class TelegramService : IMessageService
     {
         public void SendMessage(string message)
         {
@@ -40,11 +46,16 @@
         }
     }
 
-    internal class SkoofService
+    internal class SkoofService : IMessageService
     {
         public void SendMessage(string message)
         {
             Console.WriteLine("Skoof - " + message);
         }
+    }
+
+    public interface IMessageService
+    {
+        void SendMessage(string message);
     }
 }
