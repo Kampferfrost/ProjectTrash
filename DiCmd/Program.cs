@@ -1,17 +1,22 @@
-﻿namespace DiCmd
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace DiCmd
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            //сейчас класс программ выступает неким контрейнером, где мы уже вручную внедряем зависимость
-            //мы внедряем зависимость, а не осуществляем внутри объекта которому эти зависимости нужны
-            ILogger logger = new ConsoleLogger();
-            IDataBase database = new PostrgesDatabase(logger);
-            IMessageService messageService = new EmailService(logger, database);
+            IServiceCollection services = new ServiceCollection();
 
-            NotificationService notificationService = new NotificationService(messageService);
-            notificationService.Notify();
+            services.AddTransient<IMessageService, EmailService>();
+            services.AddTransient<NotificationService>();
+            services.AddTransient<ILogger, ConsoleLogger>();
+            services.AddTransient<IDataBase, PostrgesDatabase>();
+
+            ServiceProvider serviceProvider = services.BuildServiceProvider();
+            var notificationService = serviceProvider.GetService<NotificationService>();
+
+            notificationService?.Notify();
         }
     }
 
