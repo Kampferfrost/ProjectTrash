@@ -17,12 +17,11 @@
                 "1 Кот\n" +
                 "2 Собака");
             typeAnimal = Convert.ToInt32(Console.ReadLine());
-
             IAnimal animal = animalList[typeAnimal];
 
-            Console.WriteLine(animal.GetType().Name);
-
+            Console.WriteLine("Тип " + animal.GetType().Name);
             Console.WriteLine(animal.GetRoar());
+
 
 
         }

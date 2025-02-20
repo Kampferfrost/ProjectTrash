@@ -9,7 +9,7 @@ namespace EFCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=Koikatsu.db");
+            optionsBuilder.UseSqlite("Data Source=fantasy.db");
         }
 
     }
