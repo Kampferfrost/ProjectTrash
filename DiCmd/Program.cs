@@ -4,7 +4,13 @@
     {
         static void Main(string[] args)
         {
-            NotificationService notificationService = new NotificationService(new EmailService(new ConsoleLogger(),new PostrgesDatabase(new ConsoleLogger())));
+            //сейчас класс программ выступает неким контрейнером, где мы уже вручную внедряем зависимость
+            //мы внедряем зависимость, а не осуществляем внутри объекта которому эти зависимости нужны
+            ILogger logger = new ConsoleLogger();
+            IDataBase database = new PostrgesDatabase(logger);
+            IMessageService messageService = new EmailService(logger, database);
+
+            NotificationService notificationService = new NotificationService(messageService);
             notificationService.Notify();
         }
     }
