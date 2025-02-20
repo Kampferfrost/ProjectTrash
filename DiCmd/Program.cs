@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            NotificationService notificationService = new NotificationService(new EmailService());
+            NotificationService notificationService = new NotificationService(new EmailService(new ConsoleLogger(),new PostrgesDatabase(new ConsoleLogger())));
             notificationService.Notify();
         }
     }
@@ -32,9 +32,20 @@
 
     internal class EmailService : IMessageService
     {
+        private readonly ILogger _logger;
+        private readonly IDataBase _database;
+
+        public EmailService(ILogger logger, IDataBase database)
+        {
+            _logger = logger;
+            _database = database;
+        }
+
         public void SendMessage(string message)
         {
             Console.WriteLine("Email - " + message);
+            _database.Save();
+            _logger.Log("Сообщение успешно отправленно");
         }
     }
 
@@ -58,4 +69,29 @@
     {
         void SendMessage(string message);
     }
+
+     public class ConsoleLogger : ILogger
+    {
+        public void Log(string message)
+        {
+            Console.WriteLine(message);
+        }
+    }
+
+    public class PostrgesDatabase : IDataBase
+    {
+        private readonly ILogger _logger;
+
+        public PostrgesDatabase(ILogger logger)
+        {
+            _logger = logger;
+        }
+        public void Save()
+        {
+            Console.WriteLine("Данные сохранены");
+            _logger.Log("Операция прошла успешно");
+        }
+    }
+
+
 }
