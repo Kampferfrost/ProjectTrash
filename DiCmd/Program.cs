@@ -17,7 +17,7 @@ namespace DiCmd
             var notificationService = serviceProvider.GetService<NotificationService>();
 
             notificationService?.Notify();
-        }
+         }
     }
 
     internal class NotificationService
