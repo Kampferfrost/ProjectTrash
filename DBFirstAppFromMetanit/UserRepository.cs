@@ -1,7 +1,8 @@
 ﻿namespace DBFirstAppFromMetanit
 {
-    public class UserRepository
+    public class UserRepository : Interfaces.IUserRepository
     {
+        private KoikatsuContext GetContext => new KoikatsuContext();
         public List<User> GetUsers()
         {
             using var context = GetContext;
@@ -47,7 +48,7 @@
                 
         }
 
-        private KoikatsuContext GetContext => new KoikatsuContext();
+        
 
     }
 }

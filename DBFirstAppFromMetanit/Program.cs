@@ -1,4 +1,5 @@
-﻿namespace DBFirstAppFromMetanit
+﻿using Microsoft.Extensions.DependencyInjection;
+namespace DBFirstAppFromMetanit
 {
     internal class Program
     {
