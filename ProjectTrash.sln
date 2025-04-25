@@ -95,9 +95,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiCmd", "DiCmd\DiCmd.csproj
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASP.NET Core", "ASP.NET Core", "{6245DA16-CA9D-425C-AFDF-3511DA237CEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDi1", "WebDi1\WebDi1.csproj", "{8F1D1C46-FA3D-4100-97B9-73362984CF0D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{4B4B5879-56E2-432E-9EDF-B7BB3AC15A1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebDi1", "WebDi1\WebDi1.csproj", "{8F1D1C46-FA3D-4100-97B9-73362984CF0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

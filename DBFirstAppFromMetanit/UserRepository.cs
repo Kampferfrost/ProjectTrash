@@ -11,7 +11,7 @@
 
         public User? GetUser(int id)
         {
-            var context = GetContext;
+            using var context = GetContext;
             return context.Users.Find(id);
 
         }
