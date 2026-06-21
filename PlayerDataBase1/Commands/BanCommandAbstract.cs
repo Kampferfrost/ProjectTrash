@@ -1,6 +1,6 @@
 ﻿namespace PlayerDataBase1.Commands
 {
-    public class BanCommand : CommandMenu
+    public class BanCommandAbstract : CommandMenu
     {
         public override int Id { get; set; } = 2;
 

@@ -7,7 +7,7 @@ namespace Store
     internal class Store
     {
         private List<ProductStore> _productsStore = new List<ProductStore>();
-        private List<ItemPlayer> _ItemPlayer = new List<ItemPlayer>();
+        private List<ItemPlayer> _itemPlayer = new List<ItemPlayer>();
 
         #region IsRunning
         public bool IsOpen { get; private set; } = false;
@@ -30,32 +30,32 @@ namespace Store
         };
 
         #region WorkStore
-        private int mainCommand = 0;
+        private int _mainCommand = 0;
         public int MainCommand
         {
             get
             {
-                return mainCommand;
+                return _mainCommand;
             }
         }
         private bool _setMainCommand()
         {
-            return int.TryParse(Console.ReadLine(), out mainCommand);
+            return int.TryParse(Console.ReadLine(), out _mainCommand);
         }
 
-        private int storeCommand = 0;
+        private int _storeCommand = 0;
         public int StoreCommand
         {
             get
             {
-                return storeCommand;
+                return _storeCommand;
             }
         }
 
         private bool _setStoreCommand()
         {
-            mainCommand = 0;
-            return int.TryParse(Console.ReadLine(), out storeCommand);
+            _mainCommand = 0;
+            return int.TryParse(Console.ReadLine(), out _storeCommand);
         }
 
         public ViewerMenu viewerMenu;
@@ -79,10 +79,10 @@ namespace Store
                         {
                             commandMenu = command;
                             command.Execute(this);
-                            while (storeCommand != 2)
+                            while (_storeCommand != 2)
                             {
                                 _setStoreCommand();
-                                if (storeCommand == 1)
+                                if (_storeCommand == 1)
                                 {
                                     viewerMenu.ShowTextStorePay();
                                     string? nameProduct = string.Empty;
@@ -91,17 +91,17 @@ namespace Store
                                     {
                                         if (product.Name.ToLower() == nameProduct)
                                         {
-                                            _ItemPlayer.Add(new ItemPlayer() { Name = product.Name });
+                                            _itemPlayer.Add(new ItemPlayer() { Name = product.Name });
                                             _productsStore.Remove(product);
                                             Console.WriteLine($"Вы приобрели предмет {product.Name}");
-                                            storeCommand = 2;
+                                            _storeCommand = 2;
                                             Console.ReadKey();
                                             break;
                                         }
                                     }
                                 }
                             }
-                            storeCommand = 0;
+                            _storeCommand = 0;
                             break;
                         }
                     }
@@ -146,14 +146,14 @@ namespace Store
         /// <param name="itemPlayer"></param>
         public void AddItemPlayer(ItemPlayer itemPlayer)
         {
-            foreach (var item in _ItemPlayer)
+            foreach (var item in _itemPlayer)
             {
                 if (itemPlayer.Name == item.Name)
                 {
                     return;
                 }
             }
-            _ItemPlayer.Add(itemPlayer);
+            _itemPlayer.Add(itemPlayer);
         }
 
         public List<ProductStore> GetListProductsStore()
@@ -163,7 +163,7 @@ namespace Store
 
         public List<ItemPlayer> GetListItemPlayer()
         {
-            return _ItemPlayer;
+            return _itemPlayer;
         }
 
         /// <summary>

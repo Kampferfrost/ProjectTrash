@@ -19,7 +19,7 @@ namespace PlayerDataBase1
             }
         }
 
-        MainMenu mainMenu = new MainMenu();
+        MainMenu _mainMenu = new MainMenu();
 
         private List<Player> _players = new List<Player>()
         {
@@ -34,7 +34,7 @@ namespace PlayerDataBase1
         private List<CommandMenu> _commandMenus = new List<CommandMenu>()
         {
             new AddCommand(),
-            new BanCommand(),
+            new BanCommandAbstract(),
             new RemoveCommand(),
             new ExitCommand()
         };
@@ -45,8 +45,8 @@ namespace PlayerDataBase1
 
             while (WorkData)
             {
-                mainMenu.ShowMainMenu();
-                mainMenu.ShowAllPlayer(_players);
+                _mainMenu.ShowMainMenu();
+                _mainMenu.ShowAllPlayer(_players);
 
                 int setNumberCommand;
 
@@ -101,7 +101,7 @@ namespace PlayerDataBase1
         {
             Console.Clear();
             Console.WriteLine("Забанить Игрока");
-            mainMenu.ShowAllPlayer(_players);
+            _mainMenu.ShowAllPlayer(_players);
             Console.WriteLine();
 
             Console.WriteLine("Введите номер игрока");
@@ -124,7 +124,7 @@ namespace PlayerDataBase1
             Console.WriteLine("Удаляем игрока");
 
             Console.WriteLine();
-            mainMenu.ShowAllPlayer(_players);
+            _mainMenu.ShowAllPlayer(_players);
 
             Console.WriteLine();
             Console.WriteLine("Введите номер удаляемого игрока");
@@ -154,7 +154,7 @@ namespace PlayerDataBase1
         public void ExitApp()
         {
             WorkData = false;
-            mainMenu.ShowExit();
+            _mainMenu.ShowExit();
         }
 
 

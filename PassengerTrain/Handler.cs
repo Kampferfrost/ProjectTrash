@@ -9,7 +9,7 @@ namespace PassengerTrain
 
         #region City
 
-        private List<City> _cities = new List<City>();
+        private readonly List<City> _cities = new List<City>();
 
         public void AddCity(City city)
         {

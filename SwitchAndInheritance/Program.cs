@@ -60,8 +60,8 @@
         {
             var s = Alcohols.FirstOrDefault(s => s.GetType() == typeof(T));
 
-            return s as T;
-            //return Activator.CreateInstance<T>();
+            //return s as T;
+            return Activator.CreateInstance<T>();
         }
 
 
