@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.33502.453
+# Visual Studio Version 18
+VisualStudioVersion = 18.7.11911.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTrash", "ProjectTrash\ProjectTrash.csproj", "{B48C7C69-36BF-4AEC-AF24-4AFC587E328B}"
 EndProject
@@ -100,6 +100,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metanit", "Metanit", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultithreadLearning", "MultithreadLearning\MultithreadLearning.csproj", "{6E3B142A-EB67-4564-894F-4ED0596E4C3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelProgrammin", "ParallelProgrammin\ParallelProgrammin.csproj", "{275A4331-D0C5-47B1-A2A9-C09D7DA6EF9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofCheck", "ProofCheck\ProofCheck.csproj", "{B608B154-5037-4BC0-ABBE-07F727464681}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassPersonWithActionAndFunc", "ClassPersonWithActionAndFunc\ClassPersonWithActionAndFunc.csproj", "{60F8EF86-5132-41D2-9F20-B8C7AB056D9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -207,6 +213,18 @@ Global
 		{6E3B142A-EB67-4564-894F-4ED0596E4C3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E3B142A-EB67-4564-894F-4ED0596E4C3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E3B142A-EB67-4564-894F-4ED0596E4C3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{275A4331-D0C5-47B1-A2A9-C09D7DA6EF9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{275A4331-D0C5-47B1-A2A9-C09D7DA6EF9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{275A4331-D0C5-47B1-A2A9-C09D7DA6EF9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{275A4331-D0C5-47B1-A2A9-C09D7DA6EF9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B608B154-5037-4BC0-ABBE-07F727464681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B608B154-5037-4BC0-ABBE-07F727464681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B608B154-5037-4BC0-ABBE-07F727464681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B608B154-5037-4BC0-ABBE-07F727464681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60F8EF86-5132-41D2-9F20-B8C7AB056D9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60F8EF86-5132-41D2-9F20-B8C7AB056D9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60F8EF86-5132-41D2-9F20-B8C7AB056D9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60F8EF86-5132-41D2-9F20-B8C7AB056D9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -251,6 +269,9 @@ Global
 		{6245DA16-CA9D-425C-AFDF-3511DA237CEC} = {BBC2A619-FF02-491D-B005-94E8A68AF466}
 		{8F1D1C46-FA3D-4100-97B9-73362984CF0D} = {6245DA16-CA9D-425C-AFDF-3511DA237CEC}
 		{6E3B142A-EB67-4564-894F-4ED0596E4C3E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{275A4331-D0C5-47B1-A2A9-C09D7DA6EF9B} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{B608B154-5037-4BC0-ABBE-07F727464681} = {CDA75C93-4DD3-45BB-8186-489D15C02460}
+		{60F8EF86-5132-41D2-9F20-B8C7AB056D9E} = {CDA75C93-4DD3-45BB-8186-489D15C02460}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {12D5FE96-C601-4260-B4C8-771AC01ADFDD}
