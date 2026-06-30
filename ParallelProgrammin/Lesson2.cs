@@ -73,12 +73,8 @@ namespace ParallelProgrammin
         {
             //Возвращение результатов из задач
             int n1 = 4, n2 = 5;
-            Task<int> task = new Task<int>(() => Sum(n1, n2));
-            Task<int> sumTask = new Task<int>(() => n1 + n2);
-            Task proofTask = new Task(() => {
-                int a = n1;
-                int b = n2;
-            });
+            Task<int> sumTask = new Task<int>(() => Sum(n1, n2));
+
             sumTask.Start();
 
             int result = sumTask.Result;
