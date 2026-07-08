@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using ParallelProgrammin.Interfaces;
@@ -18,6 +16,7 @@ namespace ParallelProgrammin
             StartNestedTasks();
             StartTaskArray();
             ReturningResultsFromTasks();
+            ReturningResultsPersonFromTasks();
         }
         public void StartNestedTasks()
         {
@@ -80,10 +79,24 @@ namespace ParallelProgrammin
             int result = sumTask.Result;
             Console.WriteLine($"{n1} + {n2} = {result}");
         }
-
         int Sum(int a, int b) => a + b;
 
+        void ReturningResultsPersonFromTasks()
+        {
+            Task<Person> defaultPersonTask = new Task<Person>(() => new Person("Cirno", 81));
+            defaultPersonTask.Start();
 
+            Person defaultPerson = defaultPersonTask.Result;
+            Console.WriteLine($"{defaultPerson.name} - {defaultPerson.age}");
+
+        }
+        record class Person(string name, int age);
 
     }
+
+
+
+
+
 }
+
