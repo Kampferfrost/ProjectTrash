@@ -16,7 +16,7 @@ namespace ParallelProgrammin
         {
             ShowId();
             ShowIdWithResult();
-
+            StartTaskChain();
 
         }
 
@@ -62,6 +62,25 @@ namespace ParallelProgrammin
 
             int Sum(int a, int b) => a + b;
             void PrintResult(int sum) => Console.WriteLine($"Sum: {sum}");
+        }
+
+        public void StartTaskChain()
+        {
+            Task task1 = new Task(() => Console.WriteLine($"Current Task: {Task.CurrentId}"));
+
+            // задача продолжения
+            Task task2 = task1.ContinueWith(t => 
+                Console.WriteLine($"Current Task: {Task.CurrentId} Previous Task: {t.Id}"));
+
+            Task task3 = task2.ContinueWith(t =>
+                Console.WriteLine($"Current Task: {Task.CurrentId} Previous Task: {t.Id}"));
+
+            Task task4 = task3.ContinueWith(t =>
+                Console.WriteLine($"Current Task: {Task.CurrentId} Previous Task: {t.Id}"));
+
+            task1.Start();
+            task4.Wait();
+            Console.WriteLine("Конец метода");
         }
 
     }
