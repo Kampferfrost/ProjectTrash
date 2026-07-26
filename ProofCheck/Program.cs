@@ -1,11 +1,7 @@
 ﻿
 using System;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Channels;
 using System.Threading.Tasks;
-using ExamplePatternBuilder.Burger;
-using ExamplePatternBuilder.Person;
 
 namespace ProofCheck
 {

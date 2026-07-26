@@ -19,7 +19,8 @@ namespace ParallelProgrammin
             //lesson1Servise.StartLessonExamples();
 
             // Автоматически регистрируем все классы, реализующие ILesson
-            var lessonTypes = Assembly.GetExecutingAssembly()
+            var lessonsAssembly = Assembly.GetAssembly(typeof(ILesson));
+            var lessonTypes = lessonsAssembly
                 .GetTypes()
                 .Where(t => typeof(ILesson).IsAssignableFrom(t) && t.IsClass);
 
