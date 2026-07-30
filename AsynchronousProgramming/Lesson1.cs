@@ -6,7 +6,7 @@
 
         public string Title => "Асинхронные методы, async и await";
 
-        public async void StartLessonExamples()
+        public async Task StartLessonExamplesAsync()
         {
             await StartFirstMethod();
             await StartExampleDelaingAnAsynchronous();

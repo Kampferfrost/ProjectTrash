@@ -9,6 +9,6 @@ namespace AsynchronousProgramming
         public int Number { get;  }
         public string Title { get;}
 
-        void StartLessonExamples();
+        Task StartLessonExamplesAsync();
     }
 }

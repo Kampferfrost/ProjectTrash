@@ -8,7 +8,7 @@ namespace MetanitLessonsStart
 
         public LessonRunner(IEnumerable<ILesson> lessons)
         {
-            _lessons = lessons.OrderBy(l => l).ToList();
+            _lessons = lessons.OrderBy(l => l.Number).ToList();
         }
 
         public void RunMenu()
@@ -35,7 +35,7 @@ namespace MetanitLessonsStart
                 }
 
                 Console.WriteLine($"\n=== Запуск урока {selected.Number}: {selected.Title} ===\n");
-                selected.StartLessonExamples();
+                selected.StartLessonExamplesAsync();
             }
         }
     }
