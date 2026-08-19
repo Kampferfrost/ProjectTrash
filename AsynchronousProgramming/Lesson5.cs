@@ -49,14 +49,14 @@ namespace AsynchronousProgramming
         }
         class Repository
         {
-            string[] data = { "Tom", "Sam", "Kate", "Alice", "Bob" };
+            string[] _data = { "Tom", "Sam", "Kate", "Alice", "Bob" };
             public async IAsyncEnumerable<string> GetDataAsync()
             {
-                for (int i = 0; i < data.Length; i++)
+                for (int i = 0; i < _data.Length; i++)
                 {
                     Console.WriteLine($"Получаем {i + 1} элемент");
                     await Task.Delay(100);
-                    yield return data[i];
+                    yield return _data[i];
                 }
             }
         }

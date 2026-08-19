@@ -1,4 +1,5 @@
-﻿using AsynchronousProgramming;
+﻿using CollectionLessons.Interfaces;
+using CollectionLessons;
 
 namespace MetanitLessonsStart
 {

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AsynchronousProgramming\AsynchronousProgramming.csproj" />
+    <ProjectReference Include="..\Collections\CollectionLessons.csproj" />
   </ItemGroup>
 
 </Project>
