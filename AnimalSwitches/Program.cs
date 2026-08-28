@@ -22,6 +22,8 @@
             Console.WriteLine("Тип " + animal.GetType().Name);
             Console.WriteLine(animal.GetRoar());
 
+            
+
 
 
         }

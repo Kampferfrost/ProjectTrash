@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Collections\CollectionLessons.csproj" />
+    <ProjectReference Include="..\LINQ\LINQ.csproj" />
   </ItemGroup>
 
 </Project>

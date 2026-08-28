@@ -1,73 +1,75 @@
-﻿
-using System;
-using System.Linq;
-using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ProofCheck
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-
-            Account account = new Account(3);
-
-            account.Notify += (Account x, AccountEventArgs e) =>
+            Animal[] animals = new Animal[4];
+            Cat cat = new Cat();
+            cat.Name = "Barsik";
+            Dog dog = new Dog();
+            dog.Name = "Tuzin";
+            Horse horse = new Horse();
+            horse.Name = "Sakura Bakushin O";
+            Boozer boozer = new Boozer();
+            boozer.Name = "Dyadya Vitya";
+            animals[0] = cat;
+            animals[1] = dog;
+            animals[2] = horse;
+            animals[3] = boozer;
+            foreach (var animal in animals)
             {
-                Console.WriteLine($"Сумма транзакции: {e.Sum}");
-                Console.WriteLine(e.Message);
-                Console.WriteLine($"Текущая сумма на счете: {x.Sum}");
-
-
-            };
-            account.Put(34);
-
-        }
-
-
-    }
-    class AccountEventArgs
-    {
-        // Сообщение
-        public string Message { get; }
-        // Сумма, на которую изменился счет
-        public int Sum { get; }
-        public AccountEventArgs(string message, int sum)
-        {
-            Message = message;
-            Sum = sum;
-        }
-    }
-
-    class Account
-    {
-        public delegate void AccountHandler(Account sender, AccountEventArgs e);
-        public event AccountHandler? Notify;
-
-        public int Sum { get; private set; }
-
-        public Account(int sum) => Sum = sum;
-
-        public void Put(int sum)
-        {
-            Sum += sum;
-            Notify?.Invoke(this, new AccountEventArgs($"На счет поступило {sum}", sum));
-        }
-        public void Take(int sum)
-        {
-            if (Sum >= sum)
-            {
-                Sum -= sum;
-                Notify?.Invoke(this, new AccountEventArgs($"Сумма {sum} снята со счета", sum));
-            }
-            else
-            {
-                Notify?.Invoke(this, new AccountEventArgs("Недостаточно денег на счете", sum));
+                Console.WriteLine(animal.Name);
+                animal.GetRoar();
+                Console.WriteLine();
             }
         }
     }
+
+    internal class Animal
+    {
+        public string Name { get; set; }
+        public virtual void GetRoar()
+        {
+            Console.WriteLine("Абстрактный клич");
+        }
+    }
+    internal class Cat : Animal
+    {
+        public override void GetRoar()
+        {
+            Console.WriteLine("Meow meow");
+        }
+    }
+    internal class Dog : Animal
+    {
+        public override void GetRoar()
+        {
+            Console.WriteLine("Gaf gaf");
+        }
+    }
+    internal class Horse : Animal
+    {
+        public override void GetRoar()
+        {
+            Console.WriteLine("Bakushin Bakushin Bakushin!");
+        }
+    }
+    internal class Boozer : Animal
+    {
+        public override void GetRoar()
+        {
+            Console.WriteLine("Hochu buhat");
+        }
+    }
+
 }
+
+
 
 
 

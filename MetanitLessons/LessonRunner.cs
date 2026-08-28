@@ -1,5 +1,4 @@
-﻿using CollectionLessons.Interfaces;
-using CollectionLessons;
+﻿using LINQ.Interfaces;
 
 namespace MetanitLessonsStart
 {
