@@ -8,62 +8,49 @@ namespace ProofCheck
     {
         static async Task Main(string[] args)
         {
-            Animal[] animals = new Animal[4];
-            Cat cat = new Cat();
-            cat.Name = "Barsik";
-            Dog dog = new Dog();
-            dog.Name = "Tuzin";
-            Horse horse = new Horse();
-            horse.Name = "Sakura Bakushin O";
-            Boozer boozer = new Boozer();
-            boozer.Name = "Dyadya Vitya";
-            animals[0] = cat;
-            animals[1] = dog;
-            animals[2] = horse;
-            animals[3] = boozer;
-            foreach (var animal in animals)
+            Person tom = new Person("Tom", 35);
+            Person bob = new Person("Bob", 16);
+            bool tomIsValid = ValidateUser(tom);
+            bool bobIsValid = ValidateUser(bob);
+
+            Console.WriteLine($"Результат валидации тома: {tomIsValid}");
+            Console.WriteLine($"Результат валидации боба: {bobIsValid}");
+
+            bool ValidateUser(Person person)
             {
-                Console.WriteLine(animal.Name);
-                animal.GetRoar();
-                Console.WriteLine();
+                Type type = typeof(Person);
+                // получаем все атрибуты класса Person
+                object[] attributes = type.GetCustomAttributes(false);
+
+                // проходим по всем атрибутем
+                foreach (Attribute attr in attributes)
+                {
+                    // если атрибут представляет тип AgeValidationAttribute
+                    if (attr is AgeValidationAttribute ageAttribute)
+                        // возвращаем результат проверки по возрасту
+                        return person.Age >= ageAttribute.Age;
+                }
+                return true;
             }
         }
     }
 
-    internal class Animal
+    internal class AgeValidationAttribute : Attribute
     {
-        public string Name { get; set; }
-        public virtual void GetRoar()
-        {
-            Console.WriteLine("Абстрактный клич");
-        }
+        public int Age { get; }
+        public AgeValidationAttribute() { }
+        public AgeValidationAttribute(int age) => Age = age;
     }
-    internal class Cat : Animal
+
+    [AgeValidation(18)]
+    internal class Person
     {
-        public override void GetRoar()
+        public string? Name { get; }
+        public int Age { get; set; }
+        public Person(string name, int age)
         {
-            Console.WriteLine("Meow meow");
-        }
-    }
-    internal class Dog : Animal
-    {
-        public override void GetRoar()
-        {
-            Console.WriteLine("Gaf gaf");
-        }
-    }
-    internal class Horse : Animal
-    {
-        public override void GetRoar()
-        {
-            Console.WriteLine("Bakushin Bakushin Bakushin!");
-        }
-    }
-    internal class Boozer : Animal
-    {
-        public override void GetRoar()
-        {
-            Console.WriteLine("Hochu buhat");
+            Name = name;
+            Age = age;
         }
     }
 

@@ -1,6 +1,7 @@
-﻿using LINQ.Interfaces;
+﻿//using LINQ.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using Reflection.Interfaces;
 // MetanitLessonsStart is a god class(God Object) for classes metanit
 
 namespace MetanitLessonsStart

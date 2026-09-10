@@ -1,4 +1,4 @@
-﻿using LINQ.Interfaces;
+﻿using Reflection.Interfaces;
 
 namespace MetanitLessonsStart
 {
