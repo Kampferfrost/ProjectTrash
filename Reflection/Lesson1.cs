@@ -59,30 +59,32 @@ namespace Reflection
             }
 
         }
-    }
-    public class Person : IEater, IMovable
-    {
-        public string Name { get; }
-        public Person(string name) => Name = name;
-
-        public void Move()
+        public class Person : IEater, IMovable
         {
-            Console.WriteLine($"{Name} moves");
+            public string Name { get; }
+            public Person(string name) => Name = name;
+
+            public void Move()
+            {
+                Console.WriteLine($"{Name} moves");
+            }
+
+            public void Eat()
+            {
+                Console.WriteLine($"{Name} eats");
+            }
+        }
+        internal interface IEater
+        {
+            void Eat();
         }
 
-        public void Eat()
+        internal interface IMovable
         {
-            Console.WriteLine($"{Name} eats");
+            void Move();
         }
     }
+    
 
-    internal interface IEater
-    { 
-        void Eat();
-    }
-
-    internal interface IMovable
-    {
-        void Move();
-    }
+    
 }
