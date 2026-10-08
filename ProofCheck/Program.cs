@@ -1,60 +1,75 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
 namespace ProofCheck
 {
     internal class Program
     {
         static async Task Main(string[] args)
         {
-            Person tom = new Person("Tom", 35);
-            Person bob = new Person("Bob", 16);
-            bool tomIsValid = ValidateUser(tom);
-            bool bobIsValid = ValidateUser(bob);
-
-            Console.WriteLine($"Результат валидации тома: {tomIsValid}");
-            Console.WriteLine($"Результат валидации боба: {bobIsValid}");
-
-            bool ValidateUser(Person person)
-            {
-                Type type = typeof(Person);
-                // получаем все атрибуты класса Person
-                object[] attributes = type.GetCustomAttributes(false);
-
-                // проходим по всем атрибутем
-                foreach (Attribute attr in attributes)
-                {
-                    // если атрибут представляет тип AgeValidationAttribute
-                    if (attr is AgeValidationAttribute ageAttribute)
-                        // возвращаем результат проверки по возрасту
-                        return person.Age >= ageAttribute.Age;
-                }
-                return true;
-            }
+                  
         }
     }
 
-    internal class AgeValidationAttribute : Attribute
-    {
-        public int Age { get; }
-        public AgeValidationAttribute() { }
-        public AgeValidationAttribute(int age) => Age = age;
-    }
 
-    [AgeValidation(18)]
-    internal class Person
+    /// <summary>
+    /// Класс, который завёрнут в dll и его хрен достанешь. КискоКласс его мы не можем изменять
+    /// </summary>
+    class Requester
     {
-        public string? Name { get; }
-        public int Age { get; set; }
-        public Person(string name, int age)
+        public void SendRequest(string message)
         {
-            Name = name;
-            Age = age;
+            HttpRequest reg = new HttpRequest();
+            reg.UserAgent = Http.ChromeUserAgent();
+            reg.Cookies = new CookieDictionary();
+            reg.Get("http://deadline.name/someShitScript.php?message=" + message);
+             
         }
     }
+    class HttpRequest
+    {
+        public string UserAgent { get; set; }
+        public CookieDictionary Cookies { get; set; }
+        public void Get(string url)
+        {
 
+        }
+    }
+    static class Http
+    {
+        static public string ChromeUserAgent()
+        {
+            return "Tiger";
+        }
+    }
+    class CookieDictionary
+    {
+
+    }
+
+
+    // Наш интерфейс, для которого нам нужно написать класс, 
+    //который будет его реализовыва
+    interface ISender
+    {
+        void Send(string message);
+    }
+
+
+    class Adapter : ISender
+    {
+        Requester kisoClass = new Requester();
+        public void Send(string message)
+        {
+            kisoClass.SendRequest(message);
+        }
+    }
 }
+
+
+
+
+
 
 
 
